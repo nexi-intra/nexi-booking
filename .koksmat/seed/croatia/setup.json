@@ -1,0 +1,246 @@
+{
+  "name": "deskcomnfig",
+  "type": "booking",
+  "sites": {
+    "HQ": {
+      "name": "zagreb HQ",
+      "type": "office",
+      "address": "1000 Zagreb, Croatia",
+      "phone": "+385 1 123 4567",
+      "email": null
+    }
+  },
+  "buildings": {
+    "b1": {
+      "site": {
+        "name": "zagreb HQ",
+        "type": "office",
+        "address": "1000 Zagreb, Croatia",
+        "phone": "+385 1 123 4567",
+        "email": null
+      }
+    }
+  },
+  "floors": {
+    "f1": {
+      "building": {
+        "site": {
+          "name": "zagreb HQ",
+          "type": "office",
+          "address": "1000 Zagreb, Croatia",
+          "phone": "+385 1 123 4567",
+          "email": null
+        }
+      }
+    }
+  },
+  "desks": {
+    "d1": {
+      "floor": {
+        "building": {
+          "site": {
+            "name": "zagreb HQ",
+            "type": "office",
+            "address": "1000 Zagreb, Croatia",
+            "phone": "+385 1 123 4567",
+            "email": null
+          }
+        }
+      },
+      "name": "desk1",
+      "description": "desk1",
+      "capacity": 1,
+      "status": "available",
+      "restrictions": [],
+      "bookings": []
+    },
+    "d2": {
+      "floor": {
+        "building": {
+          "site": {
+            "name": "zagreb HQ",
+            "type": "office",
+            "address": "1000 Zagreb, Croatia",
+            "phone": "+385 1 123 4567",
+            "email": null
+          }
+        }
+      },
+      "name": "desk2",
+      "description": "desk2",
+      "capacity": 1,
+      "status": "available",
+      "restrictions": [],
+      "bookings": []
+    },
+    "d3": {
+      "floor": {
+        "building": {
+          "site": {
+            "name": "zagreb HQ",
+            "type": "office",
+            "address": "1000 Zagreb, Croatia",
+            "phone": "+385 1 123 4567",
+            "email": null
+          }
+        }
+      },
+      "name": "desk3",
+      "description": "desk3",
+      "capacity": 1,
+      "status": "available",
+      "restrictions": [],
+      "bookings": []
+    },
+    "d4": {
+      "floor": {
+        "building": {
+          "site": {
+            "name": "zagreb HQ",
+            "type": "office",
+            "address": "1000 Zagreb, Croatia",
+            "phone": "+385 1 123 4567",
+            "email": null
+          }
+        }
+      },
+      "name": "desk4",
+      "description": "desk4",
+      "capacity": 1,
+      "status": "available",
+      "restrictions": [],
+      "bookings": []
+    },
+    "d5": {
+      "floor": {
+        "building": {
+          "site": {
+            "name": "zagreb HQ",
+            "type": "office",
+            "address": "1000 Zagreb, Croatia",
+            "phone": "+385 1 123 4567",
+            "email": null
+          }
+        }
+      },
+      "name": "desk5",
+      "description": "desk5",
+      "capacity": 1,
+      "status": "available",
+      "restrictions": [],
+      "bookings": []
+    },
+    "d6": {
+      "floor": {
+        "building": {
+          "site": {
+            "name": "zagreb HQ",
+            "type": "office",
+            "address": "1000 Zagreb, Croatia",
+            "phone": "+385 1 123 4567",
+            "email": null
+          }
+        }
+      },
+      "name": "desk6",
+      "description": "desk6",
+      "capacity": 1,
+      "status": "available",
+      "restrictions": [],
+      "bookings": []
+    },
+    "d7": {
+      "floor": {
+        "building": {
+          "site": {
+            "name": "zagreb HQ",
+            "type": "office",
+            "address": "1000 Zagreb, Croatia",
+            "phone": "+385 1 123 4567",
+            "email": null
+          }
+        }
+      },
+      "name": "desk7",
+      "description": "desk7",
+      "capacity": 1,
+      "status": "available",
+      "restrictions": [],
+      "bookings": []
+    },
+    "d8": {
+      "floor": {
+        "building": {
+          "site": {
+            "name": "zagreb HQ",
+            "type": "office",
+            "address": "1000 Zagreb, Croatia",
+            "phone": "+385 1 123 4567",
+            "email": null
+          }
+        }
+      },
+      "name": "desk8",
+      "description": "desk8",
+      "capacity": 1,
+      "status": "available",
+      "restrictions": [],
+      "bookings": []
+    },
+    "d9": {
+      "floor": {
+        "building": {
+          "site": {
+            "name": "zagreb HQ",
+            "type": "office",
+            "address": "1000 Zagreb, Croatia",
+            "phone": "+385 1 123 4567",
+            "email": null
+          }
+        }
+      },
+      "name": "desk9",
+      "description": "desk9",
+      "capacity": 1,
+      "status": "available",
+      "restrictions": [],
+      "bookings": []
+    },
+    "d10": {
+      "floor": {
+        "building": {
+          "site": {
+            "name": "zagreb HQ",
+            "type": "office",
+            "address": "1000 Zagreb, Croatia",
+            "phone": "+385 1 123 4567",
+            "email": null
+          }
+        }
+      },
+      "name": "desk10",
+      "description": "desk10",
+      "capacity": 1,
+      "status": "available",
+      "restrictions": [],
+      "bookings": []
+    },
+    "d11": {
+      "floor": {
+        "building": {
+          "site": {
+            "name": "zagreb HQ",
+            "type": "office",
+            "address": "1000 Zagreb, Croatia",
+            "phone": "+385 1 123 4567",
+            "email": null
+          }
+        }
+      },
+      "name": "desk11",
+      "description": "desk11",
+      "capacity": 1,
+      "status": "available"
+    }
+  }
+}

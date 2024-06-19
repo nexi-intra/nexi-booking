@@ -1,0 +1,104 @@
+# https://locize.com/blog/next-app-dir-i18n/
+name: deskcomnfig
+type: booking
+sites:
+  HQ: &HQ
+    name: zagreb HQ
+    type: office
+    address: 1000 Zagreb, Croatia
+    phone: +385 1 123 4567
+    email:
+
+buildings:
+  b1: &b1
+    site: *HQ
+floors:
+  f1: &f1
+    building: *b1
+desks:
+  d1: &d1
+    floor: *f1
+    name: desk1
+    description: desk1
+    capacity: 1
+    status: available
+    restrictions: []
+    bookings: []
+  d2: &d2
+    floor: *f1
+    name: desk2
+    description: desk2
+    capacity: 1
+    status: available
+    restrictions: []
+    bookings: []
+  d3: &d3
+    floor: *f1
+    name: desk3
+    description: desk3
+    capacity: 1
+    status: available
+    restrictions: []
+    bookings: []
+  d4: &d4
+    floor: *f1
+    name: desk4
+    description: desk4
+    capacity: 1
+    status: available
+    restrictions: []
+    bookings: []
+  d5: &d5
+    floor: *f1
+    name: desk5
+    description: desk5
+    capacity: 1
+    status: available
+    restrictions: []
+    bookings: []
+  d6: &d6
+    floor: *f1
+    name: desk6
+    description: desk6
+    capacity: 1
+    status: available
+    restrictions: []
+    bookings: []
+  d7: &d7
+    floor: *f1
+    name: desk7
+    description: desk7
+    capacity: 1
+    status: available
+    restrictions: []
+    bookings: []
+  d8: &d8
+    floor: *f1
+    name: desk8
+    description: desk8
+    capacity: 1
+    status: available
+    restrictions: []
+    bookings: []
+  d9: &d9
+    floor: *f1
+    name: desk9
+    description: desk9
+    capacity: 1
+    status: available
+    restrictions: []
+    bookings: []
+  d10: &d10
+    floor: *f1
+    name: desk10
+    description: desk10
+    capacity: 1
+    status: available
+    restrictions: []
+    bookings: []
+  d11: &d11
+    floor: *f1
+    name: desk11
+    description: desk11
+    capacity: 1
+    status: available
