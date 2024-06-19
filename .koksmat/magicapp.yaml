@@ -153,19 +153,6 @@ baseattributes:
       required: false
 
 entities:
-  group: &group
-    name: group
-    description: Group
-    baselineattributes: *recordAttributes
-    additionalattributes:
-      - name: hidden
-        displayname: Hidden
-        type: boolean
-        required: false
-      - name: notesid
-        displayname: NotesId
-        type: string
-        required: true
   country: &country
     name: country
     displayname: Country
@@ -175,47 +162,71 @@ entities:
       - name: code
         type: string
         required: true
-  company: &company
-    name: company
-    displayname: Company
-    description: Company
+      - name: metadata
+        type: json
+        required: false
+
+  site: &site
+    name: site
+    displayname: Site
+    description: Site
     baselineattributes: *recordAttributes
     additionalattributes:
-      - name: vatnumber
-        displayname: Vat Number
+      - name: code
         type: string
         required: true
-      - name: phonenumber
-        displayname: Phone Number
-        type: string
-        required: false
-      - name: address
-        displayname: Address
-        type: string
-        required: false
-      - name: city
-        displayname: City
-        type: string
-        required: false
-      - name: postalcode
-        displayname: Postal Code
-        type: string
-        required: false
       - name: country
-        displayname: Country
         type: reference
+        required: true
         entity: *country
-        required: false
-  system: &system
-    name: system
-    displayname: System
-    description: System
+  building: &building
+    name: building
+    displayname: Building
+    description: Building
     baselineattributes: *recordAttributes
     additionalattributes:
-      - name: version
-        displayname: Version
+      - name: code
         type: string
         required: true
+      - name: site
+        type: reference
+        required: true
+        entity: *site
+
+  floor: &floor
+    name: floor
+    displayname: Floor
+    description: Floor
+    baselineattributes: *recordAttributes
+    additionalattributes:
+      - name: code
+        type: string
+        required: true
+      - name: floorplan
+        type: string
+        required: false
+
+      - name: building
+        type: reference
+        required: true
+        entity: *building
+
+  desk: &desk
+    name: desk
+    displayname: Desk
+    description: Desk
+    baselineattributes: *recordAttributes
+    additionalattributes:
+      - name: code
+        type: string
+        required: true
+      - name: floor
+        type: reference
+        required: true
+        entity: *floor
+      - name: metadata
+        type: json
+        required: false
 
   user: &user
     name: user
@@ -223,74 +234,53 @@ entities:
     description: User
     baselineattributes: *recordAttributes
     additionalattributes:
-      - name: system
-        displayname: System
+      - name: homecountry
         type: reference
-        entity: *system
         required: true
-      - name: fullname
-        displayname: FullName
-        type: string
-        required: true
-  relation: &relation
-    name: relation
-    displayname: Relation
-    description: Relation
-    baselineattributes: *recordAttributes
-    additionalattributes:
-      - name: relation
-        type: reference
-        displayname: Company Relation
-        entity: *company
-        required: false
-      - name: relationtype
-        displayname: Relation Type
-        type: string
-        required: false
-      - name: groups
-        displayname: Groups
-        type: array
-        entity: *group
-
-  person: &person
-    name: person
-    description: Person
-    baselineattributes: *recordAttributes
-    additionalattributes:
-      - name: email
-        displayname: Email
-        type: string
-        required: false
-        searchindex: true
-      - name: displayname
-        displayname: DisplayName
-        type: string
-        required: false
-        searchindex: true
-      - name: firstname
-        displayname: FirstName
-        type: string
-        required: true
-      - name: lastname
-        displayname: LastName
-        type: string
-        required: true
-      - name: uniqueid
-        displayname: Unique Id
-        type: string
-        required: true
-        searchindex: true
-
-      - name: nationality
-        displayname: Nationality
-        type: reference
         entity: *country
-        required: false
-      - name: users
-        displayname: Users
+      - name: favouritedesks
         type: array
-        entity: *relation
         required: false
+        entity: *desk
+
+  restritiongrouo: &restrictiongroup
+    name: restrictiongroup
+    displayname: Restriction Group
+    description: Restriction Group
+    baselineattributes: *recordAttributes
+    additionalattributes:
+      - name: code
+        type: string
+        required: true
+      - desks:
+        type: array
+        required: false
+        entity: *desk
+      - users:
+        type: array
+        required: false
+        entity: *user
+
+  booking: &booking
+    name: booking
+    displayname: Booking
+    description: Booking
+    baselineattributes: *recordAttributes
+    additionalattributes:
+      - name: desk
+        type: reference
+        required: true
+        entity: *desk
+      - name: user
+        type: reference
+        required: true
+        entity: *user
+      - name: fromdatetime
+        type: datetime
+        required: true
+      - name: todatetime
+        type: datetime
+        required: true
 
 models:
   itemMethods: &itemMethods
@@ -353,17 +343,8 @@ services:
       entity: *user
     methods: *itemMethods
 
-  - name: group
-    description: Manage Groups
-    entity:
-      type: record
-      model: group
-      objectname: Group
-      entity: *group
-    methods: *itemMethods
-
   - name: country
-    description: Manage Countries
+    description: Manage countries
     entity:
       type: record
       model: country
@@ -371,39 +352,56 @@ services:
       entity: *country
     methods: *itemMethods
 
-  - name: company
-    description: Manage Companies
+  - name: site
+    description: Manage sites
     entity:
       type: record
-      model: company
-      objectname: Company
-      entity: *company
+      model: site
+      objectname: Site
+      entity: *site
     methods: *itemMethods
 
-  - name: person
-    description: Manage Persons
+  - name: building
+    description: Manage buildings
     entity:
       type: record
-      model: person
-      objectname: Person
-      entity: *person
-    methods: *itemMethods
-    viewitem:
-
-  - name: relation
-    description: Manage Relations
-    entity:
-      type: record
-      model: relation
-      objectname: Relation
-      entity: *relation
+      model: building
+      objectname: Building
+      entity: *building
     methods: *itemMethods
 
-  - name: system
-    description: Manage Systems
+  - name: floor
+    description: Manage floors
     entity:
       type: record
-      model: system
-      objectname: System
-      entity: *system
+      model: floor
+      objectname: Floor
+      entity: *floor
+    methods: *itemMethods
+
+  - name: desk
+    description: Manage desks
+    entity:
+      type: record
+      model: desk
+      objectname: Desk
+      entity: *desk
+    methods: *itemMethods
+
+  - name: restrictiongroup
+    description: Manage restriction groups
+    entity:
+      type: record
+      model: restrictiongroup
+      objectname: Restriction Group
+      entity: *restrictiongroup
+    methods: *itemMethods
+
+  - name: booking
+    description: Manage bookings
+    entity:
+      type: record
+      model: booking
+      objectname: Booking
+      entity: *booking
     methods: *itemMethods

@@ -11,10 +11,10 @@ package country
 import (
     "log"
 
-    "github.com/magicbutton/magic-people/applogic"
-    "github.com/magicbutton/magic-people/database"
-    "github.com/magicbutton/magic-people/services/models/countrymodel"
-    . "github.com/magicbutton/magic-people/utils"
+    "github.com/magicbutton/nexi-booking/applogic"
+    "github.com/magicbutton/nexi-booking/database"
+    "github.com/magicbutton/nexi-booking/services/models/countrymodel"
+    . "github.com/magicbutton/nexi-booking/utils"
 )
 
 func CountrySearch(query string) (*Page[countrymodel.Country], error) {

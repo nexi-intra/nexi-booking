@@ -27,8 +27,7 @@ type User struct {
     Searchindex string `bun:"searchindex"`
     Name string `bun:"name"`
     Description string `bun:"description"`
-    System_id int `bun:"system_id"`
-    Fullname string `bun:"fullname"`
+    Homecountry_id int `bun:"homecountry_id"`
 
 }
 

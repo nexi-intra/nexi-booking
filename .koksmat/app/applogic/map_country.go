@@ -10,8 +10,8 @@ package applogic
 import (
 	//"encoding/json"
 	//"time"
-	"github.com/magicbutton/magic-people/database"
-	"github.com/magicbutton/magic-people/services/models/countrymodel"
+	"github.com/magicbutton/nexi-booking/database"
+	"github.com/magicbutton/nexi-booking/services/models/countrymodel"
    
 )
 
@@ -26,6 +26,7 @@ func MapCountryOutgoing(db database.Country) countrymodel.Country {
                 Name : db.Name,
         Description : db.Description,
         Code : db.Code,
+        Metadata : db.Metadata,
 
     }
 }
@@ -40,6 +41,7 @@ func MapCountryIncoming(in countrymodel.Country) database.Country {
                 Name : in.Name,
         Description : in.Description,
         Code : in.Code,
+        Metadata : in.Metadata,
         Searchindex : in.Name,
 
     }

@@ -5,12 +5,12 @@ set the Front Matter property ´keep´ to ´true´ syntax for the code snippet
 keep: false
 ---
 */   
-//GenerateGoModel v1
+//GenerateGoModel v2
 package usermodel
 import (
 	"encoding/json"
 	"time"
-    // "github.com/magicbutton/magic-people/database/databasetypes"
+    // "github.com/magicbutton/nexi-booking/database/databasetypes"
 )
 
 func UnmarshalUser(data []byte) (User, error) {
@@ -31,8 +31,7 @@ type User struct {
     UpdatedBy string `json:"updated_by"`
         Name string `json:"name"`
     Description string `json:"description"`
-    System_id int `json:"system_id"`
-    Fullname string `json:"fullname"`
+    Homecountry_id int `json:"homecountry_id"`
 
 }
 

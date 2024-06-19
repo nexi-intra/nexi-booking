@@ -5,7 +5,7 @@ set the Front Matter property ´keep´ to ´true´ syntax for the code snippet
 keep: false
 ---
 */   
-//GenerateGoModel v1
+//GenerateGoModel v2
 package countrymodel
 import (
 	"encoding/json"
@@ -32,6 +32,7 @@ type Country struct {
         Name string `json:"name"`
     Description string `json:"description"`
     Code string `json:"code"`
+    Metadata interface{} `json:"metadata"`
 
 }
 

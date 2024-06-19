@@ -10,8 +10,8 @@ package applogic
 import (
 	//"encoding/json"
 	//"time"
-	"github.com/magicbutton/magic-people/database"
-	"github.com/magicbutton/magic-people/services/models/usermodel"
+	"github.com/magicbutton/nexi-booking/database"
+	"github.com/magicbutton/nexi-booking/services/models/usermodel"
    
 )
 
@@ -25,8 +25,7 @@ func MapUserOutgoing(db database.User) usermodel.User {
         UpdatedBy: db.UpdatedBy,
                 Name : db.Name,
         Description : db.Description,
-                System_id : db.System_id,
-        Fullname : db.Fullname,
+                Homecountry_id : db.Homecountry_id,
 
     }
 }
@@ -40,8 +39,7 @@ func MapUserIncoming(in usermodel.User) database.User {
         UpdatedBy: in.UpdatedBy,
                 Name : in.Name,
         Description : in.Description,
-                System_id : in.System_id,
-        Fullname : in.Fullname,
+                Homecountry_id : in.Homecountry_id,
         Searchindex : in.Name,
 
     }
