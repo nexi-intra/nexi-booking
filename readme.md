@@ -142,286 +142,286 @@ The deployment manifest is generated and published to Kubernetes using a PowerSh
 
   - This script reads the `koksmat.json` file, generates a Kubernetes manifest, and applies it:
 
-    ```powershell
-    <#---
-    title: Web deploy to production
-    tag: webdeployproduction
-    api: post
-    ---#>
+        ```powershell
+        <#---
+        title: Web deploy to production
+        tag: webdeployproduction
+        api: post
+        ---#>
 
-    if ((Split-Path -Leaf (Split-Path  -Parent -Path $PSScriptRoot)) -eq "sessions") {
-      $path = join-path $PSScriptRoot ".." ".."
-    }
-    else {
-      $path = join-path $PSScriptRoot ".." ".koksmat/"
+        if ((Split-Path -Leaf (Split-Path  -Parent -Path $PSScriptRoot)) -eq "sessions") {
+          $path = join-path $PSScriptRoot ".." ".."
+        }
+        else {
+          $path = join-path $PSScriptRoot ".." ".koksmat/"
 
-    }
+        }
 
-    $koksmatDir = Resolve-Path $path
+        $koksmatDir = Resolve-Path $path
 
-    $inputFile = join-path  $koksmatDir "koksmat.json"
+        $inputFile = join-path  $koksmatDir "koksmat.json"
 
-    if (!(Test-Path -Path $inputFile) ) {
-      Throw "Cannot find file at expected path: $inputFile"
-    }
-    $json = Get-Content -Path $inputFile | ConvertFrom-Json
-    $version = "v$($json.version.major).$($json.version.minor).$($json.version.patch).$($json.version.build)"
-    $port = "$($json.port)"
-    $appname = $json.appname
-    $imagename = $json.imagename
-    $dnsname = $json.dnsprod
+        if (!(Test-Path -Path $inputFile) ) {
+          Throw "Cannot find file at expected path: $inputFile"
+        }
+        $json = Get-Content -Path $inputFile | ConvertFrom-Json
+        $version = "v$($json.version.major).$($json.version.minor).$($json.version.patch).$($json.version.build)"
+        $port = "$($json.port)"
+        $appname = $json.appname
+        $imagename = $json.imagename
+        $dnsname = $json.dnsprod
 
-    $image = "$($imagename)-web:$($version)"
+        $image = "$($imagename)-web:$($version)"
 
-    $config = @"
-    apiVersion: v1
-    kind: PersistentVolumeClaim
-    metadata:
-      name: pvc-$appname
-    spec:
-      accessModes:
-        - ReadWriteMany
-      resources:
-        requests:
-          storage: 1Gi
-      storageClassName: azurefile
-    ---
-    apiVersion: apps/v1
-    kind: Deployment
-    metadata:
-      name: $appname
-    spec:
-      selector:
-        matchLabels:
-          app: $appname
-      replicas: 1
-      template:
+        $config = @"
+        apiVersion: v1
+        kind: PersistentVolumeClaim
         metadata:
+          name: pvc-$appname
+        spec:
+          accessModes:
+            - ReadWriteMany
+          resources:
+            requests:
+              storage: 1Gi
+          storageClassName: azurefile
+        ---
+        apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          name: $appname
+        spec:
+          selector:
+            matchLabels:
+              app: $appname
+          replicas: 1
+          template:
+            metadata:
+              labels:
+                app: $appname
+            spec:
+              containers:
+              - name: $appname
+                image: $image
+                ports:
+                  - containerPort: $port
+                env:
+                - name: NATS
+                  value: nats://nats:4222
+                - name: DATAPATH
+                  value: /data
+                volumeMounts:
+                - mountPath: /data
+                  name: data
+              volumes:
+              - name: data
+                persistentVolumeClaim:
+                  claimName: pvc-$appname
+        ---
+        apiVersion: v1
+        kind: Service
+        metadata:
+          name: $appname
           labels:
             app: $appname
+            service: $appname
         spec:
-          containers:
-          - name: $appname
-            image: $image
-            ports:
-              - containerPort: $port
-            env:
-            - name: NATS
-              value: nats://nats:4222
-            - name: DATAPATH
-              value: /data
-            volumeMounts:
-            - mountPath: /data
-              name: data
-          volumes:
-          - name: data
-            persistentVolumeClaim:
-              claimName: pvc-$appname
-    ---
-    apiVersion: v1
-    kind: Service
-    metadata:
-      name: $appname
-      labels:
-        app: $appname
-        service: $appname
-    spec:
-      ports:
-      - name: http
-        port: 5301
-        targetPort: $port
-      selector:
-        app: $appname
-    ---
-    apiVersion: networking.k8s.io/v1
-    kind: Ingress
-    metadata:
-      name: $appname
-    spec:
-      rules:
-      - host: $dnsname
-        http:
-          paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: $appname
-                port:
-                  number: 5301
-    "@
+          ports:
+          - name: http
+            port: 5301
+            targetPort: $port
+          selector:
+            app: $appname
+        ---
+        apiVersion: networking.k8s.io/v1
+        kind: Ingress
+        metadata:
+          name: $appname
+        spec:
+          rules:
+          - host: $dnsname
+            http:
+              paths:
+              - path: /
+                pathType: Prefix
+                backend:
+                  service:
+                    name: $appname
+                    port:
+                      number: 5301
+        "@
 
-    write-host "Applying config" -ForegroundColor Green
-    write-host $config -ForegroundColor Gray
-    $config |  kubectl apply -f -
-    ```
+        write-host "Applying config" -ForegroundColor Green
+        write-host $config -ForegroundColor Gray
+        $config |  kubectl apply -f -
+        ```mermaid
 
-erDiagram
-COUNTRY ||--o{ SITE: "contains"
-SITE ||--o{ BUILDING: "contains"
-BUILDING ||--o{ FLOOR: "contains"
-FLOOR ||--o{ DESK: "contains"
-COUNTRY ||--o{ USER: "home country of"
-DESK ||--o{ BOOKING: "has"
-USER ||--o{ BOOKING: "makes"
-USER ||--o{ USER_M2M_DESK: "has"
-DESK ||--o{ USER_M2M_DESK: "has"
-RESTRICTIONGROUP ||--o{ RESTRICTIONGROUP_M2M_DESK: "has"
-DESK ||--o{ RESTRICTIONGROUP_M2M_DESK: "has"
-RESTRICTIONGROUP ||--o{ RESTRICTIONGROUP_M2M_USER: "has"
-USER ||--o{ RESTRICTIONGROUP_M2M_USER: "has"
+    erDiagram
+    COUNTRY ||--o{ SITE: "contains"
+    SITE ||--o{ BUILDING: "contains"
+    BUILDING ||--o{ FLOOR: "contains"
+    FLOOR ||--o{ DESK: "contains"
+    COUNTRY ||--o{ USER: "home country of"
+    DESK ||--o{ BOOKING: "has"
+    USER ||--o{ BOOKING: "makes"
+    USER ||--o{ USER_M2M_DESK: "has"
+    DESK ||--o{ USER_M2M_DESK: "has"
+    RESTRICTIONGROUP ||--o{ RESTRICTIONGROUP_M2M_DESK: "has"
+    DESK ||--o{ RESTRICTIONGROUP_M2M_DESK: "has"
+    RESTRICTIONGROUP ||--o{ RESTRICTIONGROUP_M2M_USER: "has"
+    USER ||--o{ RESTRICTIONGROUP_M2M_USER: "has"
 
-    COUNTRY {
-        int id PK
-        timestamp created_at
-        varchar created_by
-        timestamp updated_at
-        varchar updated_by
-        timestamp deleted_at
-        varchar tenant
-        varchar searchindex
-        varchar name
-        varchar description
-        varchar code
-        jsonb metadata
-    }
+        COUNTRY {
+            int id PK
+            timestamp created_at
+            varchar created_by
+            timestamp updated_at
+            varchar updated_by
+            timestamp deleted_at
+            varchar tenant
+            varchar searchindex
+            varchar name
+            varchar description
+            varchar code
+            jsonb metadata
+        }
 
-    SITE {
-        int id PK
-        timestamp created_at
-        varchar created_by
-        timestamp updated_at
-        varchar updated_by
-        timestamp deleted_at
-        varchar tenant
-        varchar searchindex
-        varchar name
-        varchar description
-        varchar code
-        int country_id FK
-    }
+        SITE {
+            int id PK
+            timestamp created_at
+            varchar created_by
+            timestamp updated_at
+            varchar updated_by
+            timestamp deleted_at
+            varchar tenant
+            varchar searchindex
+            varchar name
+            varchar description
+            varchar code
+            int country_id FK
+        }
 
-    BUILDING {
-        int id PK
-        timestamp created_at
-        varchar created_by
-        timestamp updated_at
-        varchar updated_by
-        timestamp deleted_at
-        varchar tenant
-        varchar searchindex
-        varchar name
-        varchar description
-        varchar code
-        int site_id FK
-    }
+        BUILDING {
+            int id PK
+            timestamp created_at
+            varchar created_by
+            timestamp updated_at
+            varchar updated_by
+            timestamp deleted_at
+            varchar tenant
+            varchar searchindex
+            varchar name
+            varchar description
+            varchar code
+            int site_id FK
+        }
 
-    FLOOR {
-        int id PK
-        timestamp created_at
-        varchar created_by
-        timestamp updated_at
-        varchar updated_by
-        timestamp deleted_at
-        varchar tenant
-        varchar searchindex
-        varchar name
-        varchar description
-        varchar code
-        varchar floorplan
-        int building_id FK
-    }
+        FLOOR {
+            int id PK
+            timestamp created_at
+            varchar created_by
+            timestamp updated_at
+            varchar updated_by
+            timestamp deleted_at
+            varchar tenant
+            varchar searchindex
+            varchar name
+            varchar description
+            varchar code
+            varchar floorplan
+            int building_id FK
+        }
 
-    DESK {
-        int id PK
-        timestamp created_at
-        varchar created_by
-        timestamp updated_at
-        varchar updated_by
-        timestamp deleted_at
-        varchar tenant
-        varchar searchindex
-        varchar name
-        varchar description
-        varchar code
-        int floor_id FK
-        jsonb metadata
-    }
+        DESK {
+            int id PK
+            timestamp created_at
+            varchar created_by
+            timestamp updated_at
+            varchar updated_by
+            timestamp deleted_at
+            varchar tenant
+            varchar searchindex
+            varchar name
+            varchar description
+            varchar code
+            int floor_id FK
+            jsonb metadata
+        }
 
-    USER {
-        int id PK
-        timestamp created_at
-        varchar created_by
-        timestamp updated_at
-        varchar updated_by
-        timestamp deleted_at
-        varchar tenant
-        varchar searchindex
-        varchar name
-        varchar description
-        int homecountry_id FK
-    }
+        USER {
+            int id PK
+            timestamp created_at
+            varchar created_by
+            timestamp updated_at
+            varchar updated_by
+            timestamp deleted_at
+            varchar tenant
+            varchar searchindex
+            varchar name
+            varchar description
+            int homecountry_id FK
+        }
 
-    USER_M2M_DESK {
-        int id PK
-        timestamp created_at
-        varchar created_by
-        timestamp updated_at
-        varchar updated_by
-        timestamp deleted_at
-        int user_id FK
-        int desk_id FK
-    }
+        USER_M2M_DESK {
+            int id PK
+            timestamp created_at
+            varchar created_by
+            timestamp updated_at
+            varchar updated_by
+            timestamp deleted_at
+            int user_id FK
+            int desk_id FK
+        }
 
-    RESTRICTIONGROUP {
-        int id PK
-        timestamp created_at
-        varchar created_by
-        timestamp updated_at
-        varchar updated_by
-        timestamp deleted_at
-        varchar tenant
-        varchar searchindex
-        varchar name
-        varchar description
-        varchar code
-    }
+        RESTRICTIONGROUP {
+            int id PK
+            timestamp created_at
+            varchar created_by
+            timestamp updated_at
+            varchar updated_by
+            timestamp deleted_at
+            varchar tenant
+            varchar searchindex
+            varchar name
+            varchar description
+            varchar code
+        }
 
-    RESTRICTIONGROUP_M2M_DESK {
-        int id PK
-        timestamp created_at
-        varchar created_by
-        timestamp updated_at
-        varchar updated_by
-        timestamp deleted_at
-        int restrictiongroup_id FK
-        int desk_id FK
-    }
+        RESTRICTIONGROUP_M2M_DESK {
+            int id PK
+            timestamp created_at
+            varchar created_by
+            timestamp updated_at
+            varchar updated_by
+            timestamp deleted_at
+            int restrictiongroup_id FK
+            int desk_id FK
+        }
 
-    RESTRICTIONGROUP_M2M_USER {
-        int id PK
-        timestamp created_at
-        varchar created_by
-        timestamp updated_at
-        varchar updated_by
-        timestamp deleted_at
-        int restrictiongroup_id FK
-        int user_id FK
-    }
+        RESTRICTIONGROUP_M2M_USER {
+            int id PK
+            timestamp created_at
+            varchar created_by
+            timestamp updated_at
+            varchar updated_by
+            timestamp deleted_at
+            int restrictiongroup_id FK
+            int user_id FK
+        }
 
-    BOOKING {
-        int id PK
-        timestamp created_at
-        varchar created_by
-        timestamp updated_at
-        varchar updated_by
-        timestamp deleted_at
-        varchar tenant
-        varchar searchindex
-        varchar name
-        varchar description
-        int desk_id FK
-        int user_id FK
-        varchar fromdatetime
-        varchar todatetime
-    }
+        BOOKING {
+            int id PK
+            timestamp created_at
+            varchar created_by
+            timestamp updated_at
+            varchar updated_by
+            timestamp deleted_at
+            varchar tenant
+            varchar searchindex
+            varchar name
+            varchar description
+            int desk_id FK
+            int user_id FK
+            varchar fromdatetime
+            varchar todatetime
+        }
