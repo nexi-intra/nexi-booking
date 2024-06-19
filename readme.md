@@ -254,7 +254,7 @@ The deployment manifest is generated and published to Kubernetes using a PowerSh
         write-host "Applying config" -ForegroundColor Green
         write-host $config -ForegroundColor Gray
         $config |  kubectl apply -f -
-        ```mermaid
+  ```mermaid
 
     erDiagram
     COUNTRY ||--o{ SITE: "contains"
