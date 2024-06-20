@@ -28,6 +28,7 @@ type Country struct {
     Name string `bun:"name"`
     Description string `bun:"description"`
     Code string `bun:"code"`
+    Flagurl string `bun:"flagurl"`
     Metadata interface{} `bun:"metadata"`
 
 }

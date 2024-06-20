@@ -240,6 +240,11 @@
           "required": true
         },
         {
+          "name": "flagurl",
+          "type": "string",
+          "required": false
+        },
+        {
           "name": "metadata",
           "type": "json",
           "required": false
@@ -327,6 +332,11 @@
                 "name": "code",
                 "type": "string",
                 "required": true
+              },
+              {
+                "name": "flagurl",
+                "type": "string",
+                "required": false
               },
               {
                 "name": "metadata",
@@ -462,6 +472,11 @@
                       "name": "code",
                       "type": "string",
                       "required": true
+                    },
+                    {
+                      "name": "flagurl",
+                      "type": "string",
+                      "required": false
                     },
                     {
                       "name": "metadata",
@@ -648,6 +663,11 @@
                             "name": "code",
                             "type": "string",
                             "required": true
+                          },
+                          {
+                            "name": "flagurl",
+                            "type": "string",
+                            "required": false
                           },
                           {
                             "name": "metadata",
@@ -882,6 +902,11 @@
                                   "required": true
                                 },
                                 {
+                                  "name": "flagurl",
+                                  "type": "string",
+                                  "required": false
+                                },
+                                {
                                   "name": "metadata",
                                   "type": "json",
                                   "required": false
@@ -981,6 +1006,11 @@
                 "name": "code",
                 "type": "string",
                 "required": true
+              },
+              {
+                "name": "flagurl",
+                "type": "string",
+                "required": false
               },
               {
                 "name": "metadata",
@@ -1209,6 +1239,11 @@
                                         "name": "code",
                                         "type": "string",
                                         "required": true
+                                      },
+                                      {
+                                        "name": "flagurl",
+                                        "type": "string",
+                                        "required": false
                                       },
                                       {
                                         "name": "metadata",
@@ -1497,6 +1532,11 @@
                                         "required": true
                                       },
                                       {
+                                        "name": "flagurl",
+                                        "type": "string",
+                                        "required": false
+                                      },
+                                      {
                                         "name": "metadata",
                                         "type": "json",
                                         "required": false
@@ -1601,6 +1641,11 @@
                       "name": "code",
                       "type": "string",
                       "required": true
+                    },
+                    {
+                      "name": "flagurl",
+                      "type": "string",
+                      "required": false
                     },
                     {
                       "name": "metadata",
@@ -1829,6 +1874,11 @@
                                               "name": "code",
                                               "type": "string",
                                               "required": true
+                                            },
+                                            {
+                                              "name": "flagurl",
+                                              "type": "string",
+                                              "required": false
                                             },
                                             {
                                               "name": "metadata",
@@ -2115,6 +2165,11 @@
                                         "required": true
                                       },
                                       {
+                                        "name": "flagurl",
+                                        "type": "string",
+                                        "required": false
+                                      },
+                                      {
                                         "name": "metadata",
                                         "type": "json",
                                         "required": false
@@ -2219,6 +2274,11 @@
                       "name": "code",
                       "type": "string",
                       "required": true
+                    },
+                    {
+                      "name": "flagurl",
+                      "type": "string",
+                      "required": false
                     },
                     {
                       "name": "metadata",
@@ -2449,6 +2509,11 @@
                                               "required": true
                                             },
                                             {
+                                              "name": "flagurl",
+                                              "type": "string",
+                                              "required": false
+                                            },
+                                            {
                                               "name": "metadata",
                                               "type": "json",
                                               "required": false
@@ -2652,6 +2717,11 @@
                     "name": "code",
                     "type": "string",
                     "required": true
+                  },
+                  {
+                    "name": "flagurl",
+                    "type": "string",
+                    "required": false
                   },
                   {
                     "name": "metadata",
@@ -2882,6 +2952,11 @@
                                             "required": true
                                           },
                                           {
+                                            "name": "flagurl",
+                                            "type": "string",
+                                            "required": false
+                                          },
+                                          {
                                             "name": "metadata",
                                             "type": "json",
                                             "required": false
@@ -3032,6 +3107,11 @@
               "name": "code",
               "type": "string",
               "required": true
+            },
+            {
+              "name": "flagurl",
+              "type": "string",
+              "required": false
             },
             {
               "name": "metadata",
@@ -3207,6 +3287,11 @@
                     "name": "code",
                     "type": "string",
                     "required": true
+                  },
+                  {
+                    "name": "flagurl",
+                    "type": "string",
+                    "required": false
                   },
                   {
                     "name": "metadata",
@@ -3428,6 +3513,11 @@
                           "name": "code",
                           "type": "string",
                           "required": true
+                        },
+                        {
+                          "name": "flagurl",
+                          "type": "string",
+                          "required": false
                         },
                         {
                           "name": "metadata",
@@ -3700,6 +3790,11 @@
                                 "name": "code",
                                 "type": "string",
                                 "required": true
+                              },
+                              {
+                                "name": "flagurl",
+                                "type": "string",
+                                "required": false
                               },
                               {
                                 "name": "metadata",
@@ -4018,6 +4113,11 @@
                                       "name": "code",
                                       "type": "string",
                                       "required": true
+                                    },
+                                    {
+                                      "name": "flagurl",
+                                      "type": "string",
+                                      "required": false
                                     },
                                     {
                                       "name": "metadata",
@@ -4389,6 +4489,11 @@
                                             "required": true
                                           },
                                           {
+                                            "name": "flagurl",
+                                            "type": "string",
+                                            "required": false
+                                          },
+                                          {
                                             "name": "metadata",
                                             "type": "json",
                                             "required": false
@@ -4493,6 +4598,11 @@
                           "name": "code",
                           "type": "string",
                           "required": true
+                        },
+                        {
+                          "name": "flagurl",
+                          "type": "string",
+                          "required": false
                         },
                         {
                           "name": "metadata",
@@ -4721,6 +4831,11 @@
                                                   "name": "code",
                                                   "type": "string",
                                                   "required": true
+                                                },
+                                                {
+                                                  "name": "flagurl",
+                                                  "type": "string",
+                                                  "required": false
                                                 },
                                                 {
                                                   "name": "metadata",
@@ -5093,6 +5208,11 @@
                                             "required": true
                                           },
                                           {
+                                            "name": "flagurl",
+                                            "type": "string",
+                                            "required": false
+                                          },
+                                          {
                                             "name": "metadata",
                                             "type": "json",
                                             "required": false
@@ -5197,6 +5317,11 @@
                           "name": "code",
                           "type": "string",
                           "required": true
+                        },
+                        {
+                          "name": "flagurl",
+                          "type": "string",
+                          "required": false
                         },
                         {
                           "name": "metadata",
@@ -5425,6 +5550,11 @@
                                                   "name": "code",
                                                   "type": "string",
                                                   "required": true
+                                                },
+                                                {
+                                                  "name": "flagurl",
+                                                  "type": "string",
+                                                  "required": false
                                                 },
                                                 {
                                                   "name": "metadata",

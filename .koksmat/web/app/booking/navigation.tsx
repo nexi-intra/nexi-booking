@@ -1,5 +1,5 @@
 import { APPNAME } from "../global";
-import { AppLeftRailProps } from "./components/appleftrail";
+import { AppLeftRailProps } from "@/components/appleftrail";
 import {
   ChevronLeft,
   ChevronRight,

@@ -162,6 +162,10 @@ entities:
       - name: code
         type: string
         required: true
+
+      - name: flagurl
+        type: string
+        required: false
       - name: metadata
         type: json
         required: false

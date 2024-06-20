@@ -1,0 +1,127 @@
+NexiGroupOffices:
+  - country: Austria
+    country_code: AT
+    flag_url: "https://flagcdn.com/w320/at.png"
+    offices:
+      - Nexi Austria GmbH, Leobersdorf
+      - PforCards, Vienna
+  - country: Belgium
+    country_code: BE
+    flag_url: "https://flagcdn.com/w320/be.png"
+    offices:
+      - Nexi Payments, Zaventem
+  - country: Croatia
+    country_code: HR
+    flag_url: "https://flagcdn.com/w320/hr.png"
+    offices:
+      - Nexi Croatia, Zagreb
+  - country: Czech Republic
+    country_code: CZ
+    flag_url: "https://flagcdn.com/w320/cz.png"
+    offices:
+      - Nexi Czech Republic, s.r.o., Prague
+  - country: Denmark
+    country_code: DK
+    flag_url: "https://flagcdn.com/w320/dk.png"
+    offices:
+      - Nets, Ballerup
+      - Dankort, Ballerup
+      - e-Boks, Hellerup
+      - NemID, Ballerup
+      - Storebox, Østerbro
+      - SignaturGruppen, Aarhus C
+  - country: Estonia
+    country_code: EE
+    flag_url: "https://flagcdn.com/w320/ee.png"
+    offices:
+      - Nets, Tallinn
+  - country: Finland
+    country_code: FI
+    flag_url: "https://flagcdn.com/w320/fi.png"
+    offices:
+      - Nets, Helsinki
+      - Nexi Digital Finland, Espoo
+      - Checkout, Tampere
+      - Paytrail, Jyväskylä
+  - country: Germany
+    country_code: DE
+    flag_url: "https://flagcdn.com/w320/de.png"
+    offices:
+      - Nexi Germany GmbH, Eschborn - Köln - München
+      - Ratepay, Berlin
+      - Nexi Payments Zweigniederlassung Deutschland, Munich
+      - Service Hub Zweigstelle Deutschland, Nuremberg
+  - country: Greece
+    country_code: GR
+    flag_url: "https://flagcdn.com/w320/gr.png"
+    offices:
+      - Nexi Payments Greece, Athens
+      - Nexi Greece, Athens
+  - country: Hungary
+    country_code: HU
+    flag_url: "https://flagcdn.com/w320/hu.png"
+    offices:
+      - Nexi Central Europe, a.s. Hungarian Branch, Budapest
+      - Nets
+  - country: Italy
+    country_code: IT
+    flag_url: "https://flagcdn.com/w320/it.png"
+    offices:
+      - Nexi Italy, Milan - Rome - Verona
+      - SIApay, Milan
+  - country: Latvia
+    country_code: LV
+    flag_url: "https://flagcdn.com/w320/lv.png"
+    offices:
+      - Nets, Riga
+  - country: Lithuania
+    country_code: LT
+    flag_url: "https://flagcdn.com/w320/lt.png"
+    offices:
+      - Nets, Tallinn
+  - country: Netherlands
+    country_code: NL
+    flag_url: "https://flagcdn.com/w320/nl.png"
+    offices:
+      - Nexi Payments, Utrecht
+  - country: Norway
+    country_code: NO
+    flag_url: "https://flagcdn.com/w320/no.png"
+    offices:
+      - Nets, Oslo
+  - country: Poland
+    country_code: PL
+    flag_url: "https://flagcdn.com/w320/pl.png"
+    offices:
+      - Polskie ePłatności, Tajęcina
+      - Przelewy24, Poznan
+      - eCard, Warsaw
+      - Nexi Payments, Warsaw
+  - country: Romania
+    country_code: RO
+    flag_url: "https://flagcdn.com/w320/ro.png"
+    offices:
+      - SIA Romania Payment Technologies, Bucharest
+      - Nexi S.p.A. Milano Sucursala Bucuresti, Bucharest
+  - country: Serbia
+    country_code: RS
+    flag_url: "https://flagcdn.com/w320/rs.png"
+    offices:
+      - Nexi RS d.o.o, Belgrade
+      - Nets
+  - country: Slovakia
+    country_code: SK
+    flag_url: "https://flagcdn.com/w320/sk.png"
+    offices:
+      - Nexi Central Europe, Bratislava
+      - Nets
+  - country: Sweden
+    country_code: SE
+    flag_url: "https://flagcdn.com/w320/se.png"
+    offices:
+      - Nets, Stockholm
+  - country: Switzerland
+    country_code: CH
+    flag_url: "https://flagcdn.com/w320/ch.png"
+    offices:
+      - Nexi Schweiz AG, Wallisellen, ZH - Glands, VD - Rivera, TI
