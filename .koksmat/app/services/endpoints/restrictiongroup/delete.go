@@ -11,16 +11,16 @@
             import (
                 "log"
                 "strconv"
-                "github.com/magicbutton/nexi-booking/applogic"
-                "github.com/magicbutton/nexi-booking/database"
-                "github.com/magicbutton/nexi-booking/services/models/restrictiongroupmodel"
+                "github.com/nexi-intra/nexi-booking/applogic"
+                "github.com/nexi-intra/nexi-booking/database"
+                "github.com/nexi-intra/nexi-booking/services/models/restrictiongroupmodel"
             
             )
             
-            func Restriction GroupDelete(arg0 string) ( error) {
+            func RestrictionGroupDelete(arg0 string) ( error) {
                 id,_ := strconv.Atoi(arg0)
-                log.Println("Calling Restriction Groupdelete")
+                log.Println("Calling RestrictionGroupdelete")
             
-                return applogic.Delete[database.Restriction Group, restrictiongroupmodel.Restriction Group](id)
+                return applogic.Delete[database.RestrictionGroup, restrictiongroupmodel.RestrictionGroup](id)
             
             }

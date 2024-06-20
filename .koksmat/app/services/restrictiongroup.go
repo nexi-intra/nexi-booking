@@ -11,14 +11,14 @@ import (
 	"encoding/json"
     "fmt"
 	"log"
-    "github.com/magicbutton/nexi-booking/services/endpoints/restrictiongroup"
-    "github.com/magicbutton/nexi-booking/services/models/restrictiongroupmodel"
+    "github.com/nexi-intra/nexi-booking/services/endpoints/restrictiongroup"
+    "github.com/nexi-intra/nexi-booking/services/models/restrictiongroupmodel"
 
-	. "github.com/magicbutton/nexi-booking/utils"
+	. "github.com/nexi-intra/nexi-booking/utils"
 	"github.com/nats-io/nats.go/micro"
 )
 
-func HandleRestriction GroupRequests(req micro.Request) {
+func HandleRestrictionGroupRequests(req micro.Request) {
 
     rawRequest := string(req.Data())
 	if rawRequest == "ping" {
@@ -47,10 +47,10 @@ if (len(payload.Args) < 2) {
 
 
     
-    result,err := restrictiongroup.Restriction GroupRead(payload.Args[1])
+    result,err := restrictiongroup.RestrictionGroupRead(payload.Args[1])
     if (err != nil) {
         log.Println("Error", err)
-        ServiceResponseError(req, fmt.Sprintf("Error calling Restriction GroupRead: %s", err))
+        ServiceResponseError(req, fmt.Sprintf("Error calling RestrictionGroupRead: %s", err))
 
 
         return
@@ -68,7 +68,7 @@ if (len(payload.Args) < 2) {
 
 
                 // transformer v1
-            object := restrictiongroupmodel.Restriction Group{}
+            object := restrictiongroupmodel.RestrictionGroup{}
             body := ""
 
             json.Unmarshal([]byte(payload.Args[1]), &body)
@@ -80,10 +80,10 @@ if (len(payload.Args) < 2) {
                 return
             }
                      
-    result,err := restrictiongroup.Restriction GroupCreate(object)
+    result,err := restrictiongroup.RestrictionGroupCreate(object)
     if (err != nil) {
         log.Println("Error", err)
-        ServiceResponseError(req, fmt.Sprintf("Error calling Restriction GroupCreate: %s", err))
+        ServiceResponseError(req, fmt.Sprintf("Error calling RestrictionGroupCreate: %s", err))
 
 
         return
@@ -101,7 +101,7 @@ if (len(payload.Args) < 2) {
 
 
                 // transformer v1
-            object := restrictiongroupmodel.Restriction Group{}
+            object := restrictiongroupmodel.RestrictionGroup{}
             body := ""
 
             json.Unmarshal([]byte(payload.Args[1]), &body)
@@ -113,10 +113,10 @@ if (len(payload.Args) < 2) {
                 return
             }
                      
-    result,err := restrictiongroup.Restriction GroupUpdate(object)
+    result,err := restrictiongroup.RestrictionGroupUpdate(object)
     if (err != nil) {
         log.Println("Error", err)
-        ServiceResponseError(req, fmt.Sprintf("Error calling Restriction GroupUpdate: %s", err))
+        ServiceResponseError(req, fmt.Sprintf("Error calling RestrictionGroupUpdate: %s", err))
 
 
         return
@@ -133,10 +133,10 @@ if (len(payload.Args) < 2) {
 }
 
 
-            err :=  restrictiongroup.Restriction GroupDelete(payload.Args[1])
+            err :=  restrictiongroup.RestrictionGroupDelete(payload.Args[1])
             if (err != nil) {
                 log.Println("Error", err)
-                ServiceResponseError(req, fmt.Sprintf("Error calling Restriction GroupDelete: %s", err))
+                ServiceResponseError(req, fmt.Sprintf("Error calling RestrictionGroupDelete: %s", err))
 
 
                 return
@@ -153,10 +153,10 @@ if (len(payload.Args) < 2) {
 
 
     
-    result,err := restrictiongroup.Restriction GroupSearch(payload.Args[1])
+    result,err := restrictiongroup.RestrictionGroupSearch(payload.Args[1])
     if (err != nil) {
         log.Println("Error", err)
-        ServiceResponseError(req, fmt.Sprintf("Error calling Restriction GroupSearch: %s", err))
+        ServiceResponseError(req, fmt.Sprintf("Error calling RestrictionGroupSearch: %s", err))
 
 
         return

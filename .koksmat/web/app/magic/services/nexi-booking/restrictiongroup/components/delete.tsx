@@ -9,7 +9,7 @@ keep: false
 import { Button } from "@/components/ui/button";
 /* spejderhagl */
 
-export default function DeleteRestriction Group(props: { id: number ,onDeleteConfirmed:()=>void}) {
+export default function DeleteRestrictionGroup(props: { id: number ,onDeleteConfirmed:()=>void}) {
     const { id,onDeleteConfirmed } = props;
 return (
 <div>

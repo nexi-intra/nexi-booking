@@ -9,14 +9,16 @@ keep: false
     package tests
     import (
         "testing"
-        "github.com/magicbutton/nexi-booking/services/endpoints/restrictiongroup"
-        
+        "github.com/nexi-intra/nexi-booking/services/endpoints/restrictiongroup"
+                    "github.com/nexi-intra/nexi-booking/services/models/restrictiongroupmodel"
         "github.com/stretchr/testify/assert"
     )
     
-    func TestRestriction Groupread(t *testing.T) {
-                    
-            result,err := restrictiongroup.Restriction GroupRead(".")
+    func TestRestrictionGroupupdate(t *testing.T) {
+                                // transformer v1
+            object := restrictiongroupmodel.RestrictionGroup{}
+         
+            result,err := restrictiongroup.RestrictionGroupUpdate(object)
             if err != nil {
                 t.Errorf("Error %s", err)
             }

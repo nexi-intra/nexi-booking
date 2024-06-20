@@ -1,7 +1,7 @@
 # https://locize.com/blog/next-app-dir-i18n/
 name: people
 type: magicservice
-organisation: magicbutton
+organisation: nexi-intra
 magicappversion: v0.0.1
 description: |
   Application focusing on having a single point of entry in the form of a `person` to find all related information 
@@ -393,7 +393,7 @@ services:
     entity:
       type: record
       model: restrictiongroup
-      objectname: Restriction Group
+      objectname: RestrictionGroup
       entity: *restrictiongroup
     methods: *itemMethods
 

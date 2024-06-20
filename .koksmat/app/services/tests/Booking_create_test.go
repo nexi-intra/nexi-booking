@@ -9,8 +9,8 @@ keep: false
     package tests
     import (
         "testing"
-        "github.com/magicbutton/nexi-booking/services/endpoints/booking"
-                    "github.com/magicbutton/nexi-booking/services/models/bookingmodel"
+        "github.com/nexi-intra/nexi-booking/services/endpoints/booking"
+                    "github.com/nexi-intra/nexi-booking/services/models/bookingmodel"
         "github.com/stretchr/testify/assert"
     )
     

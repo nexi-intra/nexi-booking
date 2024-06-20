@@ -9,17 +9,16 @@ keep: false
 package company
 
 import (
-    "log"
-   
-    "github.com/magicbutton/magic-people/applogic"
-    "github.com/magicbutton/magic-people/database"
-    "github.com/magicbutton/magic-people/services/models/companymodel"
+	"log"
 
+	"github.com/nexi-intra/nexi-booking/applogic"
+	"github.com/nexi-intra/nexi-booking/database"
+	"github.com/nexi-intra/nexi-booking/services/models/companymodel"
 )
 
 func CompanyCreate(item companymodel.Company) (*companymodel.Company, error) {
-    log.Println("Calling Companycreate")
+	log.Println("Calling Companycreate")
 
-    return applogic.Create[database.Company, companymodel.Company](item, applogic.MapCompanyIncoming, applogic.MapCompanyOutgoing)
+	return applogic.Create[database.Company, companymodel.Company](item, applogic.MapCompanyIncoming, applogic.MapCompanyOutgoing)
 
 }

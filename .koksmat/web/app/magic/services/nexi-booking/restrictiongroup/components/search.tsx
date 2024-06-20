@@ -7,8 +7,8 @@ import { useSQLSelect } from "@/app/koksmat/usesqlselect";
 import { set } from "date-fns";
 import { tr } from "date-fns/locale";
 import { useMemo, useState } from "react";
-import Restriction GroupSmallCard from "./smallcard";
-import {Restriction GroupItem} from "../applogic/model";
+import RestrictionGroupSmallCard from "./smallcard";
+import {RestrictionGroupItem} from "../applogic/model";
 
   
     /* 
@@ -26,13 +26,13 @@ keep: false
         totalPages: number
         totalItems: number
         currentPage: number
-        items: Restriction GroupItem[]
+        items: RestrictionGroupItem[]
       }
    
 
-    export default function SearchRestriction Group(
+    export default function SearchRestrictionGroup(
         props: {
-          onItemClick? : (item:Restriction GroupItem) => void
+          onItemClick? : (item:RestrictionGroupItem) => void
         }
 
     ) {
@@ -67,7 +67,7 @@ keep: false
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 ">
                   {searchResult.data.items.map((item, index) => {
                     return <div key={index}>
-                    <Restriction GroupSmallCard item={item} 
+                    <RestrictionGroupSmallCard item={item} 
                   
                     onClick={()=>{
                         if (props.onItemClick) {

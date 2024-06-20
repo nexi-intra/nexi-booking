@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/magicbutton/magic-people/utils"
+	"github.com/nexi-intra/nexi-booking/utils"
 )
 
 /**

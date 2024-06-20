@@ -9,18 +9,17 @@ keep: false
 package relation
 
 import (
-    "log"
-    "strconv"
-    "github.com/magicbutton/magic-people/applogic"
-    "github.com/magicbutton/magic-people/database"
-    "github.com/magicbutton/magic-people/services/models/relationmodel"
-
+	"github.com/nexi-intra/nexi-booking/applogic"
+	"github.com/nexi-intra/nexi-booking/database"
+	"github.com/nexi-intra/nexi-booking/services/models/relationmodel"
+	"log"
+	"strconv"
 )
 
 func RelationRead(arg0 string) (*relationmodel.Relation, error) {
-    id,_ := strconv.Atoi(arg0)
-    log.Println("Calling Relationread")
+	id, _ := strconv.Atoi(arg0)
+	log.Println("Calling Relationread")
 
-    return applogic.Read[database.Relation, relationmodel.Relation](id, applogic.MapRelationOutgoing)
+	return applogic.Read[database.Relation, relationmodel.Relation](id, applogic.MapRelationOutgoing)
 
 }

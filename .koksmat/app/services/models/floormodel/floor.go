@@ -10,7 +10,7 @@ package floormodel
 import (
 	"encoding/json"
 	"time"
-    // "github.com/magicbutton/nexi-booking/database/databasetypes"
+    // "github.com/nexi-intra/nexi-booking/database/databasetypes"
 )
 
 func UnmarshalFloor(data []byte) (Floor, error) {

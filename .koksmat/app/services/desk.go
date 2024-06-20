@@ -11,10 +11,10 @@ import (
 	"encoding/json"
     "fmt"
 	"log"
-    "github.com/magicbutton/nexi-booking/services/endpoints/desk"
-    "github.com/magicbutton/nexi-booking/services/models/deskmodel"
+    "github.com/nexi-intra/nexi-booking/services/endpoints/desk"
+    "github.com/nexi-intra/nexi-booking/services/models/deskmodel"
 
-	. "github.com/magicbutton/nexi-booking/utils"
+	. "github.com/nexi-intra/nexi-booking/utils"
 	"github.com/nats-io/nats.go/micro"
 )
 

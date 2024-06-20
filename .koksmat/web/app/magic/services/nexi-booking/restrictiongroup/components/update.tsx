@@ -9,14 +9,14 @@ keep: false
 // piratos
 import { useService } from "@/app/koksmat/useservice";
 import { useState } from "react";
-import {Restriction GroupForm} from "./form";
+import {RestrictionGroupForm} from "./form";
 
-import {Restriction GroupItem} from "../applogic/model";
-export default function UpdateRestriction Group(props: { id: number }) {
+import {RestrictionGroupItem} from "../applogic/model";
+export default function UpdateRestrictionGroup(props: { id: number }) {
     const { id } = props;
  
     const [transactionId, settransactionId] = useState(0);
-    const readResult = useService<Restriction GroupItem>(
+    const readResult = useService<RestrictionGroupItem>(
       "nexi-booking.restrictiongroup",
       ["read", id?.toString()],
       "",
@@ -26,7 +26,7 @@ export default function UpdateRestriction Group(props: { id: number }) {
     const restrictiongroup = readResult.data;
     return (
       <div>{restrictiongroup && 
-      <Restriction GroupForm restrictiongroup={restrictiongroup} editmode="update"/>}
+      <RestrictionGroupForm restrictiongroup={restrictiongroup} editmode="update"/>}
      
       </div>
     );

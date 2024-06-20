@@ -7,7 +7,7 @@ import (
 	"go.mongodb.org/mongo-driver/event"
 	"go.mongodb.org/mongo-driver/mongo/options"
 
-	"github.com/magicbutton/magic-people/utils"
+	"github.com/nexi-intra/nexi-booking/utils"
 )
 
 const AuditlogCollectionName = "audit_log"

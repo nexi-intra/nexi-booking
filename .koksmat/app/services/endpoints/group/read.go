@@ -9,18 +9,17 @@ keep: false
 package group
 
 import (
-    "log"
-    "strconv"
-    "github.com/magicbutton/magic-people/applogic"
-    "github.com/magicbutton/magic-people/database"
-    "github.com/magicbutton/magic-people/services/models/groupmodel"
-
+	"github.com/nexi-intra/nexi-booking/applogic"
+	"github.com/nexi-intra/nexi-booking/database"
+	"github.com/nexi-intra/nexi-booking/services/models/groupmodel"
+	"log"
+	"strconv"
 )
 
 func GroupRead(arg0 string) (*groupmodel.Group, error) {
-    id,_ := strconv.Atoi(arg0)
-    log.Println("Calling Groupread")
+	id, _ := strconv.Atoi(arg0)
+	log.Println("Calling Groupread")
 
-    return applogic.Read[database.Group, groupmodel.Group](id, applogic.MapGroupOutgoing)
+	return applogic.Read[database.Group, groupmodel.Group](id, applogic.MapGroupOutgoing)
 
 }

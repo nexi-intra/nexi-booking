@@ -9,17 +9,16 @@ keep: false
 package system
 
 import (
-    "log"
-   
-    "github.com/magicbutton/magic-people/applogic"
-    "github.com/magicbutton/magic-people/database"
-    "github.com/magicbutton/magic-people/services/models/systemmodel"
+	"log"
 
+	"github.com/nexi-intra/nexi-booking/applogic"
+	"github.com/nexi-intra/nexi-booking/database"
+	"github.com/nexi-intra/nexi-booking/services/models/systemmodel"
 )
 
 func SystemCreate(item systemmodel.System) (*systemmodel.System, error) {
-    log.Println("Calling Systemcreate")
+	log.Println("Calling Systemcreate")
 
-    return applogic.Create[database.System, systemmodel.System](item, applogic.MapSystemIncoming, applogic.MapSystemOutgoing)
+	return applogic.Create[database.System, systemmodel.System](item, applogic.MapSystemIncoming, applogic.MapSystemOutgoing)
 
 }

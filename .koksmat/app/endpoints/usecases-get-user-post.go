@@ -16,9 +16,9 @@ import (
 
 	"github.com/swaggest/usecase"
 
-	"github.com/magicbutton/magic-people/execution"
-	"github.com/magicbutton/magic-people/schemas"
-	"github.com/magicbutton/magic-people/utils"
+	"github.com/nexi-intra/nexi-booking/execution"
+	"github.com/nexi-intra/nexi-booking/schemas"
+	"github.com/nexi-intra/nexi-booking/utils"
 )
 
 func UsecasesGetUserPost() usecase.Interactor {

@@ -48,12 +48,12 @@ import {
   
   import { Ellipsis } from "lucide-react";
   import { Button } from "@/components/ui/button";
-  import {Restriction GroupItem} from "../applogic/model";
-  import ReadRestriction Group from "./read";
-  import UpdateRestriction Group from "./update";
+  import {RestrictionGroupItem} from "../applogic/model";
+  import ReadRestrictionGroup from "./read";
+  import UpdateRestrictionGroup from "./update";
 
-  export default function Restriction GroupSmallCard(props: {
-    item: Restriction GroupItem;
+  export default function RestrictionGroupSmallCard(props: {
+    item: RestrictionGroupItem;
     onClick?: () => void;
   }) {
     const { item,onClick} = props;
@@ -126,7 +126,7 @@ import {
         <SheetHeader>
           <SheetTitle>{item.name}</SheetTitle>
           <SheetDescription>
-            {isViewing && (item.id>0) && <ReadRestriction Group id={item.id} />}
+            {isViewing && (item.id>0) && <ReadRestrictionGroup id={item.id} />}
           </SheetDescription>
         </SheetHeader>
       </SheetContent>
@@ -136,7 +136,7 @@ import {
       <SheetHeader>
         <SheetTitle>{item.name}</SheetTitle>
         <SheetDescription>
-          {isEditing && (item.id>0) && <UpdateRestriction Group id={item.id} />}
+          {isEditing && (item.id>0) && <UpdateRestrictionGroup id={item.id} />}
         </SheetDescription>
       </SheetHeader>
     </SheetContent>

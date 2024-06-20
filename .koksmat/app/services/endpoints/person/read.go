@@ -9,18 +9,17 @@ keep: false
 package person
 
 import (
-    "log"
-    "strconv"
-    "github.com/magicbutton/magic-people/applogic"
-    "github.com/magicbutton/magic-people/database"
-    "github.com/magicbutton/magic-people/services/models/personmodel"
-
+	"github.com/nexi-intra/nexi-booking/applogic"
+	"github.com/nexi-intra/nexi-booking/database"
+	"github.com/nexi-intra/nexi-booking/services/models/personmodel"
+	"log"
+	"strconv"
 )
 
 func PersonRead(arg0 string) (*personmodel.Person, error) {
-    id,_ := strconv.Atoi(arg0)
-    log.Println("Calling Personread")
+	id, _ := strconv.Atoi(arg0)
+	log.Println("Calling Personread")
 
-    return applogic.Read[database.Person, personmodel.Person](id, applogic.MapPersonOutgoing)
+	return applogic.Read[database.Person, personmodel.Person](id, applogic.MapPersonOutgoing)
 
 }

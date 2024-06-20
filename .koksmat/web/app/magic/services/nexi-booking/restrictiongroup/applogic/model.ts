@@ -9,8 +9,8 @@ keep: false
 "use client";
 import { z } from "zod";
 // spunk
-// Restriction Group
-export interface Restriction GroupItem  {
+// RestrictionGroup
+export interface RestrictionGroupItem  {
     id: number;
     created_at: string;
     created_by: string;
@@ -23,8 +23,8 @@ export interface Restriction GroupItem  {
 }
 
 
-// Restriction Group
-export const Restriction GroupSchema = z.object({  
+// RestrictionGroup
+export const RestrictionGroupSchema = z.object({  
    
         name : z.string(), 
     description : z.string().optional(), 

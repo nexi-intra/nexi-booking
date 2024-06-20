@@ -9,15 +9,15 @@ keep: false
     package tests
     import (
         "testing"
-        "github.com/magicbutton/nexi-booking/services/endpoints/restrictiongroup"
+        "github.com/nexi-intra/nexi-booking/services/endpoints/restrictiongroup"
         
         "github.com/stretchr/testify/assert"
     )
     
-    func TestRestriction Groupdelete(t *testing.T) {
+    func TestRestrictionGroupdelete(t *testing.T) {
                 // noma4.1.1
         
-        err := restrictiongroup.Restriction GroupDelete(".")
+        err := restrictiongroup.RestrictionGroupDelete(".")
         if err != nil {
             t.Errorf("Error %s", err)
         }

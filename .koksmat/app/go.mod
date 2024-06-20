@@ -1,4 +1,4 @@
-module github.com/magicbutton/magic-people
+module github.com/nexi-intra/nexi-booking
 
 go 1.21
 
