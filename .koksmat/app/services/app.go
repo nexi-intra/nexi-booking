@@ -11,9 +11,9 @@ package services
 import (
 	"encoding/json"
 
-	"github.com/magicbutton/magic-people/services/endpoints/app"
-	. "github.com/magicbutton/magic-people/utils"
 	"github.com/nats-io/nats.go/micro"
+	"github.com/nexi-intra/nexi-booking/services/endpoints/app"
+	. "github.com/nexi-intra/nexi-booking/utils"
 )
 
 func HandleAppRequests(req micro.Request) {

@@ -1,7 +1,7 @@
 export const APPNAME = "booking";
 export const CLARITY = "luhqg4xhfv";
 export const MSAL = {
-  clientId: "3a8bf549-eb49-4c60-912b-bb30cd964574",
+  clientId: "2c1a064d-6ec3-4f83-9ac7-6996c22247e0",
 
   authority:
     "https://login.microsoftonline.com/79dc228f-c8f2-4016-8bf0-b990b6c72e98",

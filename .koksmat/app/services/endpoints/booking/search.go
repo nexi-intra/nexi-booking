@@ -11,10 +11,10 @@ package booking
 import (
     "log"
 
-    "github.com/magicbutton/nexi-booking/applogic"
-    "github.com/magicbutton/nexi-booking/database"
-    "github.com/magicbutton/nexi-booking/services/models/bookingmodel"
-    . "github.com/magicbutton/nexi-booking/utils"
+    "github.com/nexi-intra/nexi-booking/applogic"
+    "github.com/nexi-intra/nexi-booking/database"
+    "github.com/nexi-intra/nexi-booking/services/models/bookingmodel"
+    . "github.com/nexi-intra/nexi-booking/utils"
 )
 
 func BookingSearch(query string) (*Page[bookingmodel.Booking], error) {

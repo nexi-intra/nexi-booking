@@ -32,6 +32,7 @@ type Country struct {
         Name string `json:"name"`
     Description string `json:"description"`
     Code string `json:"code"`
+    Flagurl string `json:"flagurl"`
     Metadata interface{} `json:"metadata"`
 
 }

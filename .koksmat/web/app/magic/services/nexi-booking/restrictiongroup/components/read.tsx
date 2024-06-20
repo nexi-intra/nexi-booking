@@ -8,15 +8,15 @@ keep: false
 "use client";
 import { useService } from "@/app/koksmat/useservice";
 import { useState } from "react";
-import {Restriction GroupItem} from "../applogic/model";
+import {RestrictionGroupItem} from "../applogic/model";
 
 
 /* yankiebar */
 
-export default function ReadRestriction Group(props: { id: number }) {
+export default function ReadRestrictionGroup(props: { id: number }) {
     const { id } = props;
     const [transactionId, settransactionId] = useState(0);
-    const readResult = useService<Restriction GroupItem>(
+    const readResult = useService<RestrictionGroupItem>(
       "nexi-booking.restrictiongroup",
       ["read", id?.toString()],
       "",

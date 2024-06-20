@@ -4,8 +4,8 @@ import (
 	"runtime/debug"
 	"strings"
 
-	"github.com/magicbutton/magic-people/magicapp"
-	"github.com/magicbutton/magic-people/utils"
+	"github.com/nexi-intra/nexi-booking/magicapp"
+	"github.com/nexi-intra/nexi-booking/utils"
 )
 
 func main() {

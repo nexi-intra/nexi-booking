@@ -9,17 +9,17 @@ keep: false
 package system
 
 import (
-    "log"
+	"log"
 
-    "github.com/magicbutton/magic-people/applogic"
-    "github.com/magicbutton/magic-people/database"
-    "github.com/magicbutton/magic-people/services/models/systemmodel"
-    . "github.com/magicbutton/magic-people/utils"
+	"github.com/nexi-intra/nexi-booking/applogic"
+	"github.com/nexi-intra/nexi-booking/database"
+	"github.com/nexi-intra/nexi-booking/services/models/systemmodel"
+	. "github.com/nexi-intra/nexi-booking/utils"
 )
 
 func SystemSearch(query string) (*Page[systemmodel.System], error) {
-    log.Println("Calling Systemsearch")
+	log.Println("Calling Systemsearch")
 
-    return applogic.Search[database.System, systemmodel.System]("searchindex", query, applogic.MapSystemOutgoing)
+	return applogic.Search[database.System, systemmodel.System]("searchindex", query, applogic.MapSystemOutgoing)
 
 }

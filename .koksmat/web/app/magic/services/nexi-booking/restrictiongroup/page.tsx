@@ -17,24 +17,24 @@ import {
     SheetTrigger,
   } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import SearchRestriction Group from "@/app/magic/services/nexi-booking/restrictiongroup/components/search";
-import CreateRestriction Group from "@/app/magic/services/nexi-booking/restrictiongroup/components/create";
+import SearchRestrictionGroup from "@/app/magic/services/nexi-booking/restrictiongroup/components/search";
+import CreateRestrictionGroup from "@/app/magic/services/nexi-booking/restrictiongroup/components/create";
 import {useState} from "react";
 
-export default function Restriction Group() {
+export default function RestrictionGroup() {
     const [isCreating, setisCreating] = useState(false);
 return (
 <div>
 <div>
 <Button variant="secondary" onClick={() => setisCreating(true)}>Create</Button>
 </div>
-<SearchRestriction Group />
+<SearchRestrictionGroup />
 <Sheet open={isCreating} onOpenChange={setisCreating}>
 <SheetContent>
   <SheetHeader>
-    <SheetTitle>Create Restriction Group</SheetTitle>
+    <SheetTitle>Create RestrictionGroup</SheetTitle>
     <SheetDescription>
-      <CreateRestriction Group  />
+      <CreateRestrictionGroup  />
     </SheetDescription>
   </SheetHeader>
 </SheetContent>

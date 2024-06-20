@@ -11,16 +11,16 @@ package restrictiongroup
 import (
     "log"
     "strconv"
-    "github.com/magicbutton/nexi-booking/applogic"
-    "github.com/magicbutton/nexi-booking/database"
-    "github.com/magicbutton/nexi-booking/services/models/restrictiongroupmodel"
+    "github.com/nexi-intra/nexi-booking/applogic"
+    "github.com/nexi-intra/nexi-booking/database"
+    "github.com/nexi-intra/nexi-booking/services/models/restrictiongroupmodel"
 
 )
 
-func Restriction GroupRead(arg0 string) (*restrictiongroupmodel.Restriction Group, error) {
+func RestrictionGroupRead(arg0 string) (*restrictiongroupmodel.RestrictionGroup, error) {
     id,_ := strconv.Atoi(arg0)
-    log.Println("Calling Restriction Groupread")
+    log.Println("Calling RestrictionGroupread")
 
-    return applogic.Read[database.Restriction Group, restrictiongroupmodel.Restriction Group](id, applogic.MapRestriction GroupOutgoing)
+    return applogic.Read[database.RestrictionGroup, restrictiongroupmodel.RestrictionGroup](id, applogic.MapRestrictionGroupOutgoing)
 
 }

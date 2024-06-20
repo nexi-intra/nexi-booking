@@ -37,6 +37,9 @@ export default function ReadCountry(props: { id: number }) {
     </div>    <div>
         <div className="font-bold" >code</div>
         <div>{country.code}</div>
+    </div>    <div>
+        <div className="font-bold" >flagurl</div>
+        <div>{country.flagurl}</div>
     </div>                <div>
                     <div className="font-bold" >metadata</div>
                     <div>{JSON.stringify(country.metadata,null,2)}</div>

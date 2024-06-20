@@ -10,14 +10,14 @@ package applogic
 import (
 	//"encoding/json"
 	//"time"
-	"github.com/magicbutton/nexi-booking/database"
-	"github.com/magicbutton/nexi-booking/services/models/restrictiongroupmodel"
+	"github.com/nexi-intra/nexi-booking/database"
+	"github.com/nexi-intra/nexi-booking/services/models/restrictiongroupmodel"
    
 )
 
 
-func MapRestriction GroupOutgoing(db database.Restriction Group) restrictiongroupmodel.Restriction Group {
-    return restrictiongroupmodel.Restriction Group{
+func MapRestrictionGroupOutgoing(db database.RestrictionGroup) restrictiongroupmodel.RestrictionGroup {
+    return restrictiongroupmodel.RestrictionGroup{
         ID:        db.ID,
         CreatedAt: db.CreatedAt,
         CreatedBy: db.CreatedBy,
@@ -30,8 +30,8 @@ func MapRestriction GroupOutgoing(db database.Restriction Group) restrictiongrou
     }
 }
 
-func MapRestriction GroupIncoming(in restrictiongroupmodel.Restriction Group) database.Restriction Group {
-    return database.Restriction Group{
+func MapRestrictionGroupIncoming(in restrictiongroupmodel.RestrictionGroup) database.RestrictionGroup {
+    return database.RestrictionGroup{
         ID:        in.ID,
         CreatedAt: in.CreatedAt,
         CreatedBy: in.CreatedBy,

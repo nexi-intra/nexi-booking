@@ -9,17 +9,16 @@ keep: false
 package company
 
 import (
-    "log"
+	"log"
 
-    "github.com/magicbutton/magic-people/applogic"
-    "github.com/magicbutton/magic-people/database"
-    "github.com/magicbutton/magic-people/services/models/companymodel"
-
+	"github.com/nexi-intra/nexi-booking/applogic"
+	"github.com/nexi-intra/nexi-booking/database"
+	"github.com/nexi-intra/nexi-booking/services/models/companymodel"
 )
 
 func CompanyUpdate(item companymodel.Company) (*companymodel.Company, error) {
-    log.Println("Calling Companyupdate")
+	log.Println("Calling Companyupdate")
 
-    return applogic.Update[database.Company, companymodel.Company](item.ID,item, applogic.MapCompanyIncoming, applogic.MapCompanyOutgoing)
+	return applogic.Update[database.Company, companymodel.Company](item.ID, item, applogic.MapCompanyIncoming, applogic.MapCompanyOutgoing)
 
 }

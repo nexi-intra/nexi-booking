@@ -14,7 +14,7 @@ import (
 )
 
 
-type Restriction Group struct {
+type RestrictionGroup struct {
     ID        int    `json:"id"`
     CreatedAt time.Time `json:"created_at"`
     CreatedBy string `json:"created_by"`

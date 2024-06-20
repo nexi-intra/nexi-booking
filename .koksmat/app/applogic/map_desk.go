@@ -10,8 +10,8 @@ package applogic
 import (
 	//"encoding/json"
 	//"time"
-	"github.com/magicbutton/nexi-booking/database"
-	"github.com/magicbutton/nexi-booking/services/models/deskmodel"
+	"github.com/nexi-intra/nexi-booking/database"
+	"github.com/nexi-intra/nexi-booking/services/models/deskmodel"
    
 )
 

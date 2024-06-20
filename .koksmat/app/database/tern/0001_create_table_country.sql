@@ -24,6 +24,7 @@ CREATE TABLE public.country
     ,name character varying COLLATE pg_catalog."default"  NOT NULL
     ,description character varying COLLATE pg_catalog."default" 
     ,code character varying COLLATE pg_catalog."default"  NOT NULL
+    ,flagurl character varying COLLATE pg_catalog."default" 
     ,metadata JSONB  
 
 

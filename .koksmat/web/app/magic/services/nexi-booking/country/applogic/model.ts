@@ -19,6 +19,7 @@ export interface CountryItem  {
         name : string ;
     description : string ;
     code : string ;
+    flagurl : string ;
     metadata : object ;
 
 }
@@ -30,6 +31,7 @@ export const CountrySchema = z.object({
         name : z.string(), 
     description : z.string().optional(), 
     code : z.string(), 
+    flagurl : z.string().optional(), 
     metadata : z.object({}).optional(), 
 
 });

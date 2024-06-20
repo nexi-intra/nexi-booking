@@ -12,7 +12,7 @@ ENV KITCHEN_HOME="/kitchens"
 RUN go install github.com/koksmat-com/koksmat@v2.1.6.20
 RUN koksmat context init sharepoint
 WORKDIR /kitchens
-COPY ./.koksmat/kitchenroot .
+
 WORKDIR /kitchens/magic-people
 COPY . .  
 WORKDIR /kitchens/magic-people/.koksmat/app

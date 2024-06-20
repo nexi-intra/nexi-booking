@@ -13,17 +13,17 @@ import (
     // 
 )
 
-func UnmarshalRestriction Group(data []byte) (Restriction Group, error) {
-	var r Restriction Group
+func UnmarshalRestrictionGroup(data []byte) (RestrictionGroup, error) {
+	var r RestrictionGroup
 	err := json.Unmarshal(data, &r)
 	return r, err
 }
 
-func (r *Restriction Group) Marshal() ([]byte, error) {
+func (r *RestrictionGroup) Marshal() ([]byte, error) {
 	return json.Marshal(r)
 }
 
-type Restriction Group struct {
+type RestrictionGroup struct {
     ID        int    `json:"id"`
     CreatedAt time.Time `json:"created_at"`
     CreatedBy string `json:"created_by"`

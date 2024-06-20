@@ -7,8 +7,8 @@ keep: false
 */ 
 "use client";
 import { useState,useEffect } from "react";
-import {Restriction GroupItem} from "../applogic/model";
-import {Restriction GroupSchema} from "../applogic/model";
+import {RestrictionGroupItem} from "../applogic/model";
+import {RestrictionGroupSchema} from "../applogic/model";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
@@ -28,9 +28,9 @@ import {
 
 
 
-export function Restriction GroupForm(props : {restrictiongroup: Restriction GroupItem,editmode:"create"|"update"}) {
+export function RestrictionGroupForm(props : {restrictiongroup: RestrictionGroupItem,editmode:"create"|"update"}) {
     const {restrictiongroup,editmode} = props;
-    function onSubmit(data: z.infer<typeof Restriction GroupSchema>) {
+    function onSubmit(data: z.infer<typeof RestrictionGroupSchema>) {
         toast({
           title: "You submitted the following values:",
           description: (
@@ -40,8 +40,8 @@ export function Restriction GroupForm(props : {restrictiongroup: Restriction Gro
           ),
         })
       }
-    const form = useForm<z.infer<typeof Restriction GroupSchema>>({
-        resolver: zodResolver(Restriction GroupSchema)
+    const form = useForm<z.infer<typeof RestrictionGroupSchema>>({
+        resolver: zodResolver(RestrictionGroupSchema)
       })
 
       useEffect(() => {

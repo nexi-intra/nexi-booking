@@ -86,7 +86,7 @@ The KOKSMAT framework leverages GitHub Actions for continuous integration and de
        "appname": "magic-people",
        "dnsprod": "people.intra.nexigroup.com",
        "dnstest": "people-test.intra.nexigroup.com",
-       "imagename": "ghcr.io/magicbutton/magic-people",
+       "imagename": "ghcr.io/nexi-intra/nexi-booking",
        "port": 4444
      }
      ```
@@ -254,6 +254,7 @@ The deployment manifest is generated and published to Kubernetes using a PowerSh
         write-host "Applying config" -ForegroundColor Green
         write-host $config -ForegroundColor Gray
         $config |  kubectl apply -f -
+
   ```mermaid
 
     erDiagram
@@ -425,3 +426,4 @@ The deployment manifest is generated and published to Kubernetes using a PowerSh
             varchar fromdatetime
             varchar todatetime
         }
+  ```

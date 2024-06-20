@@ -11,15 +11,15 @@ package restrictiongroup
 import (
     "log"
 
-    "github.com/magicbutton/nexi-booking/applogic"
-    "github.com/magicbutton/nexi-booking/database"
-    "github.com/magicbutton/nexi-booking/services/models/restrictiongroupmodel"
-    . "github.com/magicbutton/nexi-booking/utils"
+    "github.com/nexi-intra/nexi-booking/applogic"
+    "github.com/nexi-intra/nexi-booking/database"
+    "github.com/nexi-intra/nexi-booking/services/models/restrictiongroupmodel"
+    . "github.com/nexi-intra/nexi-booking/utils"
 )
 
-func Restriction GroupSearch(query string) (*Page[restrictiongroupmodel.Restriction Group], error) {
-    log.Println("Calling Restriction Groupsearch")
+func RestrictionGroupSearch(query string) (*Page[restrictiongroupmodel.RestrictionGroup], error) {
+    log.Println("Calling RestrictionGroupsearch")
 
-    return applogic.Search[database.Restriction Group, restrictiongroupmodel.Restriction Group]("searchindex", query, applogic.MapRestriction GroupOutgoing)
+    return applogic.Search[database.RestrictionGroup, restrictiongroupmodel.RestrictionGroup]("searchindex", query, applogic.MapRestrictionGroupOutgoing)
 
 }

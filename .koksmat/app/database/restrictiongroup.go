@@ -14,7 +14,7 @@ import (
 	"github.com/uptrace/bun"
 )
 
-type Restriction Group struct {
+type RestrictionGroup struct {
 	bun.BaseModel `bun:"table:restrictiongroup,alias:restrictiongroup"`
 
 	ID             int     `bun:"id,pk,autoincrement"`

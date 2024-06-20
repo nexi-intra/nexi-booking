@@ -11,8 +11,8 @@ package cmds
 import (
 	"context"
 
-	"github.com/magicbutton/magic-people/execution"
-	"github.com/magicbutton/magic-people/utils"
+	"github.com/nexi-intra/nexi-booking/execution"
+	"github.com/nexi-intra/nexi-booking/utils"
 )
 
 func ProvisionWebdeploytestPost(ctx context.Context, args []string) (*string, error) {

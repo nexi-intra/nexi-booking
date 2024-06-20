@@ -8,15 +8,15 @@ keep: false
     "use client";
     import { useService } from "@/app/koksmat/useservice";
     import { useState } from "react";
-    import {Restriction GroupForm} from "./form";
+    import {RestrictionGroupForm} from "./form";
     
-    import {Restriction GroupItem} from "../applogic/model";
-    export default function CreateRestriction Group() {
+    import {RestrictionGroupItem} from "../applogic/model";
+    export default function CreateRestrictionGroup() {
        
-        const restrictiongroup = {} as Restriction GroupItem;
+        const restrictiongroup = {} as RestrictionGroupItem;
         return (
           <div>{restrictiongroup && 
-          <Restriction GroupForm restrictiongroup={restrictiongroup} editmode="create"/>}
+          <RestrictionGroupForm restrictiongroup={restrictiongroup} editmode="create"/>}
          
           </div>
         );
