@@ -25,6 +25,8 @@ CREATE TABLE public.site
     ,description character varying COLLATE pg_catalog."default" 
     ,code character varying COLLATE pg_catalog."default"  NOT NULL
     ,country_id int   NOT NULL
+    ,parkingenabled boolean  
+    ,deskbookingenabled boolean  
 
 
 );

@@ -20,6 +20,8 @@ export interface SiteItem  {
     description : string ;
     code : string ;
     country_id : number ;
+    parkingenabled : boolean ;
+    deskbookingenabled : boolean ;
 
 }
 
@@ -31,6 +33,8 @@ export const SiteSchema = z.object({
     description : z.string().optional(), 
     code : z.string(), 
     country_id : z.number(), 
+    parkingenabled : z.boolean().optional(), 
+    deskbookingenabled : z.boolean().optional(), 
 
 });
 

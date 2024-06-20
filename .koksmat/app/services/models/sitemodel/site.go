@@ -33,6 +33,8 @@ type Site struct {
     Description string `json:"description"`
     Code string `json:"code"`
     Country_id int `json:"country_id"`
+    Parkingenabled bool `json:"parkingenabled"`
+    Deskbookingenabled bool `json:"deskbookingenabled"`
 
 }
 

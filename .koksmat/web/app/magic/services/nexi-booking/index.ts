@@ -21,6 +21,7 @@ export const pagemap : AppMap = {
   "name": "people",
   "services": [
     {
+      "name": "user",
       "endpoints": [
         {
           "name": "read"
@@ -37,10 +38,10 @@ export const pagemap : AppMap = {
         {
           "name": "search"
         }
-      ],
-      "name": "user"
+      ]
     },
     {
+      "name": "country",
       "endpoints": [
         {
           "name": "read"
@@ -57,10 +58,10 @@ export const pagemap : AppMap = {
         {
           "name": "search"
         }
-      ],
-      "name": "country"
+      ]
     },
     {
+      "name": "site",
       "endpoints": [
         {
           "name": "read"
@@ -77,10 +78,10 @@ export const pagemap : AppMap = {
         {
           "name": "search"
         }
-      ],
-      "name": "site"
+      ]
     },
     {
+      "name": "building",
       "endpoints": [
         {
           "name": "read"
@@ -97,10 +98,10 @@ export const pagemap : AppMap = {
         {
           "name": "search"
         }
-      ],
-      "name": "building"
+      ]
     },
     {
+      "name": "floor",
       "endpoints": [
         {
           "name": "read"
@@ -117,10 +118,10 @@ export const pagemap : AppMap = {
         {
           "name": "search"
         }
-      ],
-      "name": "floor"
+      ]
     },
     {
+      "name": "desk",
       "endpoints": [
         {
           "name": "read"
@@ -137,10 +138,10 @@ export const pagemap : AppMap = {
         {
           "name": "search"
         }
-      ],
-      "name": "desk"
+      ]
     },
     {
+      "name": "restrictiongroup",
       "endpoints": [
         {
           "name": "read"
@@ -157,10 +158,10 @@ export const pagemap : AppMap = {
         {
           "name": "search"
         }
-      ],
-      "name": "restrictiongroup"
+      ]
     },
     {
+      "name": "booking",
       "endpoints": [
         {
           "name": "read"
@@ -177,8 +178,7 @@ export const pagemap : AppMap = {
         {
           "name": "search"
         }
-      ],
-      "name": "booking"
+      ]
     }
   ]
 }

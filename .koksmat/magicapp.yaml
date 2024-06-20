@@ -183,6 +183,12 @@ entities:
         type: reference
         required: true
         entity: *country
+      - name: parkingenabled
+        type: boolean
+        required: false
+      - name: deskbookingenabled
+        type: boolean
+        required: false
   building: &building
     name: building
     displayname: Building

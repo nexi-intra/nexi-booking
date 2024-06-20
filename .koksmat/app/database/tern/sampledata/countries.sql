@@ -32,7 +32,7 @@ BEGIN
 ('Sweden', 'SE', 'https://flagcdn.com/w320/se.png'),
 ('Switzerland', 'CH', 'https://flagcdn.com/w320/ch.png')) AS t(country, country_code, flag_url)
         LOOP
-            EXECUTE format('INSERT INTO public.country(id, created_at, created_by, updated_at, updated_by, deleted_at, tenant, searchindex, name, url,code, flagurl)
+            EXECUTE format('INSERT INTO public.country(id, created_at, created_by, updated_at, updated_by, deleted_at, tenant, searchindex, name, code, flagurl)
              VALUES (DEFAULT, DEFAULT, '''', DEFAULT, '''', DEFAULT, '''', ''name:%s'', %L, %L, %L);', country_record.country, country_record.country, country_record.country_code, country_record.flag_url);
     END LOOP;
 END;

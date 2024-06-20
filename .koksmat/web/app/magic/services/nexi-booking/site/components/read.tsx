@@ -40,6 +40,12 @@ export default function ReadSite(props: { id: number }) {
     </div>    <div>
         <div className="font-bold" >country</div>
         <div>{site.country_id}</div>
+    </div>    <div>
+        <div className="font-bold" >parkingenabled</div>
+        <div>{site.parkingenabled}</div>
+    </div>    <div>
+        <div className="font-bold" >deskbookingenabled</div>
+        <div>{site.deskbookingenabled}</div>
     </div>
     <div>
         <div>

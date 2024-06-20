@@ -345,6 +345,16 @@
               }
             ]
           }
+        },
+        {
+          "name": "parkingenabled",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "deskbookingenabled",
+          "type": "boolean",
+          "required": false
         }
       ]
     },
@@ -485,6 +495,16 @@
                     }
                   ]
                 }
+              },
+              {
+                "name": "parkingenabled",
+                "type": "boolean",
+                "required": false
+              },
+              {
+                "name": "deskbookingenabled",
+                "type": "boolean",
+                "required": false
               }
             ]
           }
@@ -676,6 +696,16 @@
                           }
                         ]
                       }
+                    },
+                    {
+                      "name": "parkingenabled",
+                      "type": "boolean",
+                      "required": false
+                    },
+                    {
+                      "name": "deskbookingenabled",
+                      "type": "boolean",
+                      "required": false
                     }
                   ]
                 }
@@ -913,6 +943,16 @@
                                 }
                               ]
                             }
+                          },
+                          {
+                            "name": "parkingenabled",
+                            "type": "boolean",
+                            "required": false
+                          },
+                          {
+                            "name": "deskbookingenabled",
+                            "type": "boolean",
+                            "required": false
                           }
                         ]
                       }
@@ -1252,6 +1292,16 @@
                                       }
                                     ]
                                   }
+                                },
+                                {
+                                  "name": "parkingenabled",
+                                  "type": "boolean",
+                                  "required": false
+                                },
+                                {
+                                  "name": "deskbookingenabled",
+                                  "type": "boolean",
+                                  "required": false
                                 }
                               ]
                             }
@@ -1543,6 +1593,16 @@
                                       }
                                     ]
                                   }
+                                },
+                                {
+                                  "name": "parkingenabled",
+                                  "type": "boolean",
+                                  "required": false
+                                },
+                                {
+                                  "name": "deskbookingenabled",
+                                  "type": "boolean",
+                                  "required": false
                                 }
                               ]
                             }
@@ -1887,6 +1947,16 @@
                                             }
                                           ]
                                         }
+                                      },
+                                      {
+                                        "name": "parkingenabled",
+                                        "type": "boolean",
+                                        "required": false
+                                      },
+                                      {
+                                        "name": "deskbookingenabled",
+                                        "type": "boolean",
+                                        "required": false
                                       }
                                     ]
                                   }
@@ -2176,6 +2246,16 @@
                                       }
                                     ]
                                   }
+                                },
+                                {
+                                  "name": "parkingenabled",
+                                  "type": "boolean",
+                                  "required": false
+                                },
+                                {
+                                  "name": "deskbookingenabled",
+                                  "type": "boolean",
+                                  "required": false
                                 }
                               ]
                             }
@@ -2520,6 +2600,16 @@
                                             }
                                           ]
                                         }
+                                      },
+                                      {
+                                        "name": "parkingenabled",
+                                        "type": "boolean",
+                                        "required": false
+                                      },
+                                      {
+                                        "name": "deskbookingenabled",
+                                        "type": "boolean",
+                                        "required": false
                                       }
                                     ]
                                   }
@@ -2963,6 +3053,16 @@
                                           }
                                         ]
                                       }
+                                    },
+                                    {
+                                      "name": "parkingenabled",
+                                      "type": "boolean",
+                                      "required": false
+                                    },
+                                    {
+                                      "name": "deskbookingenabled",
+                                      "type": "boolean",
+                                      "required": false
                                     }
                                   ]
                                 }
@@ -3300,6 +3400,16 @@
                   }
                 ]
               }
+            },
+            {
+              "name": "parkingenabled",
+              "type": "boolean",
+              "required": false
+            },
+            {
+              "name": "deskbookingenabled",
+              "type": "boolean",
+              "required": false
             }
           ]
         }
@@ -3526,6 +3636,16 @@
                         }
                       ]
                     }
+                  },
+                  {
+                    "name": "parkingenabled",
+                    "type": "boolean",
+                    "required": false
+                  },
+                  {
+                    "name": "deskbookingenabled",
+                    "type": "boolean",
+                    "required": false
                   }
                 ]
               }
@@ -3803,6 +3923,16 @@
                               }
                             ]
                           }
+                        },
+                        {
+                          "name": "parkingenabled",
+                          "type": "boolean",
+                          "required": false
+                        },
+                        {
+                          "name": "deskbookingenabled",
+                          "type": "boolean",
+                          "required": false
                         }
                       ]
                     }
@@ -4126,6 +4256,16 @@
                                     }
                                   ]
                                 }
+                              },
+                              {
+                                "name": "parkingenabled",
+                                "type": "boolean",
+                                "required": false
+                              },
+                              {
+                                "name": "deskbookingenabled",
+                                "type": "boolean",
+                                "required": false
                               }
                             ]
                           }
@@ -4500,6 +4640,16 @@
                                           }
                                         ]
                                       }
+                                    },
+                                    {
+                                      "name": "parkingenabled",
+                                      "type": "boolean",
+                                      "required": false
+                                    },
+                                    {
+                                      "name": "deskbookingenabled",
+                                      "type": "boolean",
+                                      "required": false
                                     }
                                   ]
                                 }
@@ -4844,6 +4994,16 @@
                                                 }
                                               ]
                                             }
+                                          },
+                                          {
+                                            "name": "parkingenabled",
+                                            "type": "boolean",
+                                            "required": false
+                                          },
+                                          {
+                                            "name": "deskbookingenabled",
+                                            "type": "boolean",
+                                            "required": false
                                           }
                                         ]
                                       }
@@ -5219,6 +5379,16 @@
                                           }
                                         ]
                                       }
+                                    },
+                                    {
+                                      "name": "parkingenabled",
+                                      "type": "boolean",
+                                      "required": false
+                                    },
+                                    {
+                                      "name": "deskbookingenabled",
+                                      "type": "boolean",
+                                      "required": false
                                     }
                                   ]
                                 }
@@ -5563,6 +5733,16 @@
                                                 }
                                               ]
                                             }
+                                          },
+                                          {
+                                            "name": "parkingenabled",
+                                            "type": "boolean",
+                                            "required": false
+                                          },
+                                          {
+                                            "name": "deskbookingenabled",
+                                            "type": "boolean",
+                                            "required": false
                                           }
                                         ]
                                       }

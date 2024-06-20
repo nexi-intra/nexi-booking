@@ -284,6 +284,8 @@ The deployment manifest is generated and published to Kubernetes using a PowerSh
             varchar name
             varchar description
             varchar code
+            varchar flagurl
+
             jsonb metadata
         }
 
@@ -299,6 +301,8 @@ The deployment manifest is generated and published to Kubernetes using a PowerSh
             varchar name
             varchar description
             varchar code
+            bool parkingenabled
+            bool deskbookingenabled
             int country_id FK
         }
 

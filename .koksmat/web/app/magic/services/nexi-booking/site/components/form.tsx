@@ -122,6 +122,40 @@ export function SiteForm(props : {site: SiteItem,editmode:"create"|"update"}) {
    </FormItem>
  )}
 />
+    {/* boolean */}<FormField
+ control={form.control}
+ name="parkingenabled"
+ render={({ field }) => (
+   <FormItem>
+     <FormLabel>parkingenabled</FormLabel>
+     <FormControl>
+       <div>Boolean not implemented</div>
+
+     </FormControl>
+     <FormDescription>
+       
+     </FormDescription>
+     <FormMessage />
+   </FormItem>
+ )}
+/>
+    {/* boolean */}<FormField
+ control={form.control}
+ name="deskbookingenabled"
+ render={({ field }) => (
+   <FormItem>
+     <FormLabel>deskbookingenabled</FormLabel>
+     <FormControl>
+       <div>Boolean not implemented</div>
+
+     </FormControl>
+     <FormDescription>
+       
+     </FormDescription>
+     <FormMessage />
+   </FormItem>
+ )}
+/>
 
     <div>
    

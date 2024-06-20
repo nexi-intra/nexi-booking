@@ -29,6 +29,8 @@ type Site struct {
     Description string `bun:"description"`
     Code string `bun:"code"`
     Country_id int `bun:"country_id"`
+    Parkingenabled bool `bun:"parkingenabled"`
+    Deskbookingenabled bool `bun:"deskbookingenabled"`
 
 }
 
