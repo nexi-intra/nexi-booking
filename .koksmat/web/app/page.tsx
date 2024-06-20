@@ -7,13 +7,18 @@ keep: false
 
 */
 import { APPNAME } from "@/app/global";
+import { CountrySelector } from "@/components/component/country-selector";
 import { redirect } from "next/navigation";
 import { useEffect } from "react";
 
 export default function Home() {
-  useEffect(() => {
-    redirect("/" + APPNAME);
-  }, []);
+  // useEffect(() => {
+  //   redirect("/" + APPNAME);
+  // }, []);
 
-  return <div></div>;
+  return (
+    <div className="w-full  flex justify-center content-center ">
+      <CountrySelector />
+    </div>
+  );
 }
