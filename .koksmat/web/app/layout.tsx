@@ -17,6 +17,7 @@ import { ServiceInspector } from "@/app/koksmat/components/service-inspector";
 
 import { ToastProvider } from "@/components/ui/toast";
 import { CLARITY } from "./global";
+import { Navbar } from "@/components/component/navbar";
 
 export default function RootLayout2({
   children,
@@ -39,11 +40,13 @@ export default function RootLayout2({
           attribute="class"
           defaultTheme="system"
           enableSystem
-          disableTransitionOnChange
-        >
+          disableTransitionOnChange>
           <MagicboxProvider>
             <MSALWrapper>
-              {children}
+              <div className="h-[100vh] w-full bg-[url('/Booking_15.png')] bg-cover dark:bg-[url('/Booking_black.png')] flex">
+                <Navbar />
+                <div className="pt-20">{children}</div>
+              </div>
               <TailwindIndicator />
               <ServiceInspector />
               <ToastProvider />
