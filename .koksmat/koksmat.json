@@ -1,13 +1,12 @@
 {
   "version": {
     "minor": 0,
-    "build": 5,
-    "patch": 5,
+    "build": 1,
+    "patch": 1,
     "major": 0
   },
-  "appname": "magic-people",
-  "dnsprod": "people.intra.nexigroup.com",
-  "dnstest": "people-test.intra.nexigroup.com",
+  "appname": "nexi-booking",
+  "dnsprod": "booking.intra.nexigroup.com",
   "imagename": "ghcr.io/nexi-intra/nexi-booking",
   "port": 4444
 }
