@@ -68,7 +68,27 @@
 				"isDefault": true
 			}
 		},	
+		{
+			"type": "shell",
+			"label": "Connect NATS",
+			"command": "kubectl",
+			"args": [
+				"port-forward",
+				"services/nats",
+				"4222:4222", 
+				"8080:8080",
+				 "-n","magicbox-christianiabpos"
 
+
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},	
 		{
 			"type": "shell",
 			"label": "Connect PostGres",
