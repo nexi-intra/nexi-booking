@@ -97,7 +97,6 @@ WaitForEstablishedConnection:
 	})
 	root := srv.AddGroup(name)
 	RegisterServiceCoreEndpoints(root)
-	RegisterServiceEndpoints(root)
 
 	for {
 		if nc.IsClosed() {
