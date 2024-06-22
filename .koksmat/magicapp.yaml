@@ -352,6 +352,21 @@ services:
       objectname: User
       entity: *user
     methods: *itemMethods
+    procedures:
+      setcountry:
+        description: Update the default country for a user, user record will be update or created
+        parameters:
+          - name: upn
+            description: The upn of the user
+            type: string
+            required: true
+          - name: country
+            description: The country to set as default
+            reference: *country
+            required: true
+        returns:
+          type: object
+          reference: *user
 
   - name: country
     description: Manage countries
@@ -406,6 +421,64 @@ services:
       objectname: RestrictionGroup
       entity: *restrictiongroup
     methods: *itemMethods
+    procedures:
+      adddesk:
+        description: Add a desk to a restriction group
+        parameters:
+          - name: id
+            description: The id of the restriction group
+            type: int64
+            required: true
+          - name: desk
+            description: The desk to add
+            reference: *desk
+            required: true
+        returns:
+          type: object
+          reference: *restrictiongroup
+
+      removedesk:
+        description: Remove a desk from a restriction group
+        parameters:
+          - name: id
+            description: The id of the restriction group
+            type: int64
+            required: true
+          - name: desk
+            description: The desk to remove
+            reference: *desk
+            required: true
+        returns:
+          type: object
+          reference: *restrictiongroup
+      adduser:
+        description: Add a user to a restriction group
+        parameters:
+          - name: id
+            description: The id of the restriction group
+            type: int64
+            required: true
+          - name: user
+            description: The user to add
+            reference: *user
+            required: true
+        returns:
+          type: object
+          reference: *restrictiongroup
+      removeuser:
+        description: Remove a user from a restriction group
+        parameters:
+          - name: id
+            description: The id of the restriction group
+            type: int64
+            required: true
+          - name: user
+            description: The user to remove
+            reference: *user
+            required: true
+        returns:
+          type: object
+          reference: *restrictiongroup
 
   - name: booking
     description: Manage bookings
@@ -415,3 +488,67 @@ services:
       objectname: Booking
       entity: *booking
     methods: *itemMethods
+    procedures:
+      createbooking:
+        description: Book a desk
+        parameters:
+          - name: desk
+            description: The desk to book
+            reference: *desk
+            required: true
+          - name: user
+            description: The user booking the desk
+            reference: *user
+            required: true
+          - name: fromdatetime
+            description: The start date and time of the booking
+            type: datetime
+            required: true
+          - name: todatetime
+            description: The end date and time of the booking
+            type: datetime
+            required: true
+        returns:
+          type: object
+          reference: *booking
+      deletebooking:
+        description: Delete a booking
+        parameters:
+          - name: id
+            description: The id of the booking
+            type: int64
+            required: true
+        returns:
+          type: void
+      movebooking:
+        description: Move a booking
+        parameters:
+          - name: id
+            description: The id of the booking
+            type: int64
+            required: true
+          - name: desk
+            description: The desk to move the booking to
+            reference: *desk
+            required: true
+        returns:
+          type: object
+          reference: *booking
+      changebooking:
+        description: Change a booking
+        parameters:
+          - name: id
+            description: The id of the booking
+            type: int64
+            required: true
+          - name: fromdatetime
+            description: The start date and time of the booking
+            type: datetime
+            required: true
+          - name: todatetime
+            description: The end date and time of the booking
+            type: datetime
+            required: true
+        returns:
+          type: object
+          reference: *booking

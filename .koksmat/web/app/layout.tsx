@@ -40,12 +40,13 @@ export default function RootLayout2({
           attribute="class"
           defaultTheme="system"
           enableSystem
-          disableTransitionOnChange>
+          disableTransitionOnChange
+        >
           <MagicboxProvider>
             <MSALWrapper>
               <div className="h-[100vh] w-full bg-[url('/Booking_15.png')] bg-cover dark:bg-[url('/Booking_black.png')] flex">
                 <Navbar />
-                <div className="pt-20">{children}</div>
+                <div className="pt-20 w-full h-full">{children}</div>
               </div>
               <TailwindIndicator />
               <ServiceInspector />

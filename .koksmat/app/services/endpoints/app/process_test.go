@@ -7,8 +7,7 @@ import (
 
 func TestProcessNull(t *testing.T) {
 
-	args := []string{}
-	err := Process(args)
+	err := Process()
 	if err == nil {
 		t.Errorf("Expected error, got nil")
 	}

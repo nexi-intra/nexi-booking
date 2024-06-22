@@ -11,20 +11,21 @@ package app
 // noma2
 import (
 	"context"
+	"encoding/json"
 	"fmt"
-
-	pgx "github.com/jackc/pgx/v4"
+	"os"
 )
 
-func call(args ...any) (pgx.Rows, error) {
+type Result struct {
+	Data string `json:"data"`
+}
+
+func call(args ...string) (string, error) {
 	if len(args) < 1 {
-		return nil, fmt.Errorf("no procedure name provided")
+		return "", fmt.Errorf("no procedure name provided")
 	}
 
-	procName, ok := args[0].(string)
-	if !ok {
-		return nil, fmt.Errorf("first argument must be the procedure name as a string")
-	}
+	procName := args[0] //.(string)
 
 	query := fmt.Sprintf("CALL proc.%s(", procName)
 	params := make([]interface{}, len(args)-1)
@@ -39,15 +40,55 @@ func call(args ...any) (pgx.Rows, error) {
 	}
 	query += placeholders + ")"
 
-	return conn.Query(context.Background(), query, params...)
-}
-
-func Process(args ...any) error {
-	if len(args) < 1 {
-		return fmt.Errorf("Expected arguments")
+	// Start a transaction
+	tx, err := conn.Begin(context.Background())
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Failed to begin transaction: %v\n", err)
+		return "", err
 	}
 
-	_, err := call(args...)
+	// Ensure the transaction is committed or rolled back
+	defer func() {
+		if err != nil {
+			tx.Rollback(context.Background())
+		} else {
+			tx.Commit(context.Background())
+		}
+	}()
+	// Call a stored procedure
+	var result string
+	err = tx.QueryRow(context.Background(), "CALL my_stored_procedure($1)", 123).Scan(&result)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Failed to call stored procedure: %v\n", err)
+		return "", err
+	}
 
-	return err
+	// Wrap the result into a JSON object
+	res := Result{Data: result}
+	jsonData, err := json.Marshal(res)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Failed to marshal JSON: %v\n", err)
+		return "", err
+	}
+
+	// Scan the JSON into a string variable
+	return string(jsonData), nil
+
+}
+
+func Process(args []string) (*SelectResponse, error) {
+	if len(args) < 1 {
+		return nil, fmt.Errorf("Expected arguments")
+	}
+
+	rows, err := call(args...)
+	if err != nil {
+		return nil, err
+	}
+
+	result := SelectResponse{
+		Result: json.RawMessage(rows),
+	}
+
+	return &result, nil
 }
