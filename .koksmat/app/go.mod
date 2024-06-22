@@ -34,6 +34,7 @@ require (
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/nats-io/nkeys v0.4.6 // indirect
 	github.com/nats-io/nuid v1.0.1 // indirect
+	github.com/pkg/errors v0.9.1 // indirect
 	github.com/shopspring/decimal v1.3.1 // indirect
 	github.com/tmthrgd/go-hex v0.0.0-20190904060850-447a3041c3bc // indirect
 	github.com/uptrace/bun/extra/bundebug v1.2.1 // indirect
@@ -101,6 +102,7 @@ require (
 require (
 	github.com/dimchansky/utfbom v1.1.1
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
+	github.com/jackc/pgx v3.6.2+incompatible
 	github.com/jackc/pgx/v4 v4.18.3
 	github.com/nats-io/nats.go v1.31.0
 	github.com/spf13/pflag v1.0.5 // indirect
