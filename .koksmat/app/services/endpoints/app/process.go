@@ -10,78 +10,74 @@ package app
 
 // noma2
 import (
-	"context"
+	"database/sql"
 	"encoding/json"
 	"fmt"
+	"log"
 	"os"
+
+	"github.com/spf13/viper"
 )
 
 type Result struct {
 	Data string `json:"data"`
 }
 
-func call(args ...string) (string, error) {
-	if len(args) < 1 {
-		return "", fmt.Errorf("no procedure name provided")
-	}
+func call(procName string, who string, payload json.RawMessage) (string, error) {
+	connectionString := viper.GetString("POSTGRES_DB")
 
-	procName := args[0] //.(string)
-
-	query := fmt.Sprintf("CALL proc.%s(", procName)
-	params := make([]interface{}, len(args)-1)
-	placeholders := ""
-
-	for i := range params {
-		params[i] = args[i+1]
-		if i > 0 {
-			placeholders += ", "
-		}
-		placeholders += fmt.Sprintf("$%d", i+1)
-	}
-	query += placeholders + ")"
-
-	// Start a transaction
-	tx, err := conn.Begin(context.Background())
+	db, err := sql.Open("postgres", connectionString)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Failed to begin transaction: %v\n", err)
-		return "", err
+		log.Fatal(err)
 	}
+	defer db.Close()
+	pingErr := db.Ping()
+	if pingErr != nil {
+		return "", pingErr
 
-	// Ensure the transaction is committed or rolled back
-	defer func() {
-		if err != nil {
-			tx.Rollback(context.Background())
-		} else {
-			tx.Commit(context.Background())
-		}
-	}()
-	// Call a stored procedure
-	var result string
-	err = tx.QueryRow(context.Background(), "CALL my_stored_procedure($1)", 123).Scan(&result)
+	}
+	var payloadStr string = string(payload)
+
+	sqlStatement := fmt.Sprintf(`
+		DO $$
+	DECLARE
+	    p_id INTEGER;
+	    p_actor_name VARCHAR := '%s';
+	    p_params JSONB := '%s';
+	BEGIN
+	    -- Call the procedure
+	    CALL proc.%s(p_actor_name, p_params, p_id);
+
+	    -- Output the resulting ID
+	    RAISE NOTICE ' ID: %s', p_id;
+	END $$;
+
+		`, who, payloadStr, procName, "%")
+	//sqlStatement := "call proc.simple_procedure()"
+	log.Println(sqlStatement)
+	x, err := db.Exec(sqlStatement)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Failed to call stored procedure: %v\n", err)
 		return "", err
 	}
 
-	// Wrap the result into a JSON object
-	res := Result{Data: result}
-	jsonData, err := json.Marshal(res)
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Failed to marshal JSON: %v\n", err)
-		return "", err
+	if x != nil {
+		log.Println("Executed successfully", x)
 	}
 
+	// Wrap the result into a JSON object
+
 	// Scan the JSON into a string variable
-	return string(jsonData), nil
+	return `{"OK":true}`, nil
 
 }
 
 func Process(args []string) (*SelectResponse, error) {
-	if len(args) < 1 {
+	if len(args) < 2 {
 		return nil, fmt.Errorf("Expected arguments")
 	}
 
-	rows, err := call(args...)
+	rows, err := call(args[0], "system", json.RawMessage(args[1]))
 	if err != nil {
 		return nil, err
 	}

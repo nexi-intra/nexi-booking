@@ -44,10 +44,7 @@ export default function RootLayout2({
         >
           <MagicboxProvider>
             <MSALWrapper>
-              <div className="h-[100vh] w-full bg-[url('/Booking_15.png')] bg-cover dark:bg-[url('/Booking_black.png')] flex">
-                <Navbar />
-                <div className="pt-20 w-full h-full">{children}</div>
-              </div>
+              {children}
               <TailwindIndicator />
               <ServiceInspector />
               <ToastProvider />
