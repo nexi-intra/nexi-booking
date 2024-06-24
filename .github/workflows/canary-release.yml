@@ -57,7 +57,7 @@ jobs:
         run: |
           $app_name = "${{ github.repository }}-canary".Replace("/", "-")
           $dnsname =$app_name + ".intra.nexigroup.com"
-          $manifest = @"
+          @"
             apiVersion: apps/v1
             kind: Deployment
             metadata:
@@ -83,7 +83,10 @@ jobs:
                         - name: NATS
                           value: nats://nats:4222
 
-            ---
+
+          "@ | Out-File -FilePath deployment.yml
+          @"
+
             apiVersion: v1
             kind: Service
             metadata:
@@ -98,7 +101,9 @@ jobs:
                   targetPort: 4444
               selector:
                 app: $app_name
-            ---    
+
+          "@ | Out-File -FilePath service.yml
+          @"
             apiVersion: networking.k8s.io/v1
             kind: Ingress
             metadata:
@@ -115,11 +120,7 @@ jobs:
                             name: $app_name
                             port:
                               number: 5301
-          "@ 
-
-
-          write-output $manifest
-          $manifest | Out-File -FilePath deployment.yml
+          "@ | Out-File -FilePath ingress.yml
 
       - name: Log in to Azure CLI
         uses: azure/login@v1
@@ -133,5 +134,10 @@ jobs:
       - name: Deploy to AKS
         run: |
           cat deployment.yml
-          echo "Deploying to AKS"
           kubectl apply -f deployment.yml -n magicbox-christianiabpos
+
+          cat service.yml
+          kubectl apply -f service.yml -n magicbox-christianiabpos
+
+          cat ingress.yml
+          kubectl apply -f ingress.yml -n magicbox-christianiabpos
