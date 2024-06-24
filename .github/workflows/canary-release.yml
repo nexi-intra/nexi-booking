@@ -39,43 +39,45 @@ jobs:
           file: ./Dockerfile.web
           push: true
           tags: ghcr.io/${{ github.repository }}:canary
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
-    #   - name: Generate Kubernetes manifest
-    #     run: |
-    #       cat <<EOF > deployment.yml
-    #       apiVersion: apps/v1
-    #       kind: Deployment
-    #       metadata:
-    #         name: myapp-canary
-    #         labels:
-    #           app: myapp
-    #       spec:
-    #         replicas: 1
-    #         selector:
-    #           matchLabels:
-    #             app: myapp
-    #         template:
-    #           metadata:
-    #             labels:
-    #               app: myapp
-    #           spec:
-    #             containers:
-    #             - name: myapp
-    #               image: ghcr.io/${{ github.repository_owner }}/$(basename $GITHUB_REPOSITORY):canary
-    #               ports:
-    #               - containerPort: 80
-    #       EOF
-    #     shell: bash
+      - name: Generate Kubernetes manifest
+        run: |
+          cat <<EOF > deployment.yml
+          apiVersion: apps/v1
+          kind: Deployment
+          metadata:
+            name:  ${{ github.repository }}-canary
+            labels:
+              app: ${{ github.repository }}-canary
+          spec:
+            replicas: 1
+            selector:
+              matchLabels:
+                app:  ${{ github.repository }}-canary
+            template:
+              metadata:
+                labels:
+                  app:  ${{ github.repository }}-canary
+              spec:
+                containers:
+                - name:  ${{ github.repository }}-canary
+                  image: ghcr.io/${{ github.repository }}:canary
+                  ports:
+                  - containerPort: 80
+          EOF
+        shell: bash
 
-    #   - name: Log in to Azure CLI
-    #     uses: azure/login@v1
-    #     with:
-    #       creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - name: Log in to Azure CLI
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    #   - name: Set AKS context
-    #     run: |
-    #       az aks get-credentials --resource-group ${{ secrets.AZURE_RG }} --name ${{ secrets.AZURE_AKS }}
+      - name: Set AKS context
+        run: |
+          az aks get-credentials --resource-group ${{ secrets.AZURE_RG }} --name ${{ secrets.AZURE_AKS }}
 
-    #   - name: Deploy to AKS
-    #     run: |
-    #       kubectl apply -f deployment.yml
+      - name: Deploy to AKS
+        run: |
+          kubectl apply -f deployment.yml
