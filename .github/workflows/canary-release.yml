@@ -91,11 +91,11 @@ jobs:
                 labels:
                   app: $appname
                   service: $appname
-                spec:
+              spec:
                 ports:
-                - name: http
-                  port: 5301
-                  targetPort: 4444
+                  - name: http
+                    port: 5301
+                    targetPort: 4444
                 selector:
                   app: $appname
             ---    
@@ -105,16 +105,16 @@ jobs:
                 name: $appname
             spec:
                 rules:
-                - host: $dnsname
-                http:
-                    paths:
-                    - path: /
-                    pathType: Prefix
-                    backend:
-                    service:
-                        name: $appname
-                        port:
-                        number: 5301
+                  - host: $dnsname
+                    http:
+                      paths:
+                        - path: /
+                          pathType: Prefix
+                          backend:
+                          service:
+                            name: $appname
+                            port:
+                              number: 5301
 
 
           "@ 
