@@ -85,38 +85,36 @@ jobs:
 
             ---
             apiVersion: v1
-              kind: Service
-              metadata:
-                name: $app_name
-                labels:
-                  app: $app_name
-                  service: $app_name
-              spec:
-                ports:
-                  - name: http
-                    port: 5301
-                    targetPort: 4444
-                selector:
-                  app: $app_name
+            kind: Service
+            metadata:
+              name: $app_name
+              labels:
+                app: $app_name
+                service: $app_name
+            spec:
+              ports:
+                - name: http
+                  port: 5301
+                  targetPort: 4444
+              selector:
+                app: $app_name
             ---    
             apiVersion: networking.k8s.io/v1
             kind: Ingress
             metadata:
-                name: $app_name
+              name: $app_name
             spec:
-                rules:
-                  - host: $dnsname
-                    http:
-                      paths:
-                        - path: /
-                          pathType: Prefix
-                          backend:
+              rules:
+                - host: $dnsname
+                  http:
+                    paths:
+                      - path: /
+                        pathType: Prefix
+                        backend:
                           service:
                             name: $app_name
                             port:
                               number: 5301
-
-
           "@ 
 
 
