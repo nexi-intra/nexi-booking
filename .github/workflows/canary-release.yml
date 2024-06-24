@@ -60,25 +60,27 @@ jobs:
             apiVersion: apps/v1
             kind: Deployment
             metadata:
-                name: $app_name
-                labels:
+              name: $app_name
+              labels:
                 app: $app_name
             spec:
-                replicas: 1
-                selector:
+              replicas: 1
+              selector:
                 matchLabels:
-                    app: $app_name
-                template:
+                  app: $app_name
+              template:
                 metadata:
-                    labels:
-                    app: $app_name
+                  labels:
+                  app: $app_name
                 spec:
-                    containers:
+                  containers:
                     - name: $app_name
-                    image: ghcr.io/${{ github.repository_owner }}:canary
-                    ports:
-                    - containerPort: 80
+                      image: ghcr.io/${{ github.repository_owner }}:canary
+                      ports:
+                        - containerPort: 80
           "@ 
+
+
           write-output $manifest
           $manifest | Out-File -FilePath deployment.yml
 
@@ -93,4 +95,6 @@ jobs:
 
       - name: Deploy to AKS
         run: |
+          cat deployment.yml
+          echo "Deploying to AKS"
           kubectl apply -f deployment.yml
