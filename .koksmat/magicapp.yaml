@@ -170,6 +170,27 @@ entities:
       - name: todatetime
         type: datetime
         required: true
+  auditlog: &auditlog
+    name: auditlog
+    displayname: Audit Log
+    description: Audit Log
+    baselineattributes: *recordAttributes
+    additionalattributes:
+      - name: action
+        type: string
+        required: true
+      - name: entity
+        type: string
+        required: true
+      - name: entityid
+        type: string
+        required: true
+      - name: actor
+        type: string
+        required: true
+      - name: metadata
+        type: json
+        required: false
 
 models:
   itemMethods: &itemMethods
@@ -431,3 +452,12 @@ services:
         returns:
           type: object
           reference: *booking
+
+  - name: auditlog
+    description: Manage audit logs
+    entity:
+      type: record
+      model: auditlog
+      objectname: Audit Log
+      entity: *auditlog
+    methods: *itemMethods

@@ -17,15 +17,7 @@ AS $BODY$
 DECLARE
     v_id INTEGER;
 BEGIN
-    v_tenant := p_params->>'tenant';
-    v_searchindex := p_params->>'searchindex';
-    v_name := p_params->>'name';
-    v_description := p_params->>'description';
-    v_code := p_params->>'code';
-    v_country_id := p_params->>'country_id';
-    v_parkingenabled := p_params->>'parkingenabled';
-    v_deskbookingenabled := p_params->>'deskbookingenabled';
-         
+    v_id := p_params->>'id';
     
         
     UPDATE public.site

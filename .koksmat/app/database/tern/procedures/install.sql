@@ -50,4 +50,8 @@ CREATE SCHEMA "proc";{{ template "user_setcountry.sql".}}
 {{ template "booking_update_proc.sql".}} 
 {{ template "booking_delete_proc.sql".}} 
 {{ template "booking_undo_delete_proc.sql".}} 
+{{ template "auditlog_create_proc.sql".}} 
+{{ template "auditlog_update_proc.sql".}} 
+{{ template "auditlog_delete_proc.sql".}} 
+{{ template "auditlog_undo_delete_proc.sql".}} 
 

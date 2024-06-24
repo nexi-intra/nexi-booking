@@ -17,14 +17,7 @@ AS $BODY$
 DECLARE
     v_id INTEGER;
 BEGIN
-    v_tenant := p_params->>'tenant';
-    v_searchindex := p_params->>'searchindex';
-    v_name := p_params->>'name';
-    v_description := p_params->>'description';
-    v_code := p_params->>'code';
-    v_floorplan := p_params->>'floorplan';
-    v_building_id := p_params->>'building_id';
-         
+    v_id := p_params->>'id';
     
         
     UPDATE public.floor

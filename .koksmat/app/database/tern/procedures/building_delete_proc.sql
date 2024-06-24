@@ -17,25 +17,20 @@ LANGUAGE plpgsql
 AS $BODY$
 DECLARE
     v_id INTEGER;
-    v_soft_delete BOOLEAN;
+    v_hard BOOLEAN;
 BEGIN
-    v_tenant := p_params->>'tenant';
-    v_searchindex := p_params->>'searchindex';
-    v_name := p_params->>'name';
-    v_description := p_params->>'description';
-    v_code := p_params->>'code';
-    v_site_id := p_params->>'site_id';
-         
-    
-        
-    IF v_soft_delete THEN
+    v_id := p_params->>'id';
+    v_hard := p_params->>'hard';
+  
+    IF v_hard THEN
+     DELETE FROM public.building
+        WHERE id = v_id;
+       
+    ELSE
         UPDATE public.building
         SET deleted_at = CURRENT_TIMESTAMP,
             updated_at = CURRENT_TIMESTAMP,
             updated_by = p_actor_name
-        WHERE id = v_id;
-    ELSE
-        DELETE FROM public.building
         WHERE id = v_id;
     END IF;
 END;

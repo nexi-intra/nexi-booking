@@ -9,7 +9,7 @@ keep: false
 
 -- krydder sild
 
-CREATE OR REPLACE PROCEDURE proc.delete_user(
+CREATE OR REPLACE PROCEDURE proc.delete_auditlog(
     p_actor_name VARCHAR,
     p_params JSONB
 )
@@ -23,11 +23,11 @@ BEGIN
     v_hard := p_params->>'hard';
   
     IF v_hard THEN
-     DELETE FROM public.user
+     DELETE FROM public.auditlog
         WHERE id = v_id;
        
     ELSE
-        UPDATE public.user
+        UPDATE public.auditlog
         SET deleted_at = CURRENT_TIMESTAMP,
             updated_at = CURRENT_TIMESTAMP,
             updated_by = p_actor_name

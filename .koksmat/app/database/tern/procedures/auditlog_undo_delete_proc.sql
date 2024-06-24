@@ -8,7 +8,7 @@ keep: false
 
 -- karry sild
 
-CREATE OR REPLACE PROCEDURE proc.undo_delete_booking(
+CREATE OR REPLACE PROCEDURE proc.undo_delete_auditlog(
     p_actor_name VARCHAR,
     p_params JSONB
 )
@@ -20,7 +20,7 @@ BEGIN
     v_id := p_params->>'id';
     
         
-    UPDATE public.booking
+    UPDATE public.auditlog
     SET deleted_at = NULL,
         updated_at = CURRENT_TIMESTAMP,
         updated_by = p_actor_name

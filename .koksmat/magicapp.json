@@ -2478,6 +2478,67 @@
           "required": true
         }
       ]
+    },
+    "auditlog": {
+      "name": "auditlog",
+      "displayname": "Audit Log",
+      "description": "Audit Log",
+      "baselineattributes": [
+        {
+          "name": "tenant",
+          "type": "string",
+          "displayname": "Tenant",
+          "hidden": true,
+          "required": true
+        },
+        {
+          "name": "searchindex",
+          "type": "string",
+          "displayname": "Search Index",
+          "description": "Search Index is used for concatenating all searchable fields in a single field making in easier to search\n",
+          "hidden": true,
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "displayname": "Name",
+          "required": true
+        },
+        {
+          "name": "description",
+          "displayname": "Description",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "additionalattributes": [
+        {
+          "name": "action",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "entity",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "entityid",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "actor",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "metadata",
+          "type": "json",
+          "required": false
+        }
+      ]
     }
   },
   "models": {
@@ -13211,6 +13272,138 @@
           }
         }
       }
+    },
+    {
+      "name": "auditlog",
+      "description": "Manage audit logs",
+      "entity": {
+        "type": "record",
+        "model": "auditlog",
+        "objectname": "Audit Log",
+        "entity": {
+          "name": "auditlog",
+          "displayname": "Audit Log",
+          "description": "Audit Log",
+          "baselineattributes": [
+            {
+              "name": "tenant",
+              "type": "string",
+              "displayname": "Tenant",
+              "hidden": true,
+              "required": true
+            },
+            {
+              "name": "searchindex",
+              "type": "string",
+              "displayname": "Search Index",
+              "description": "Search Index is used for concatenating all searchable fields in a single field making in easier to search\n",
+              "hidden": true,
+              "required": true
+            },
+            {
+              "name": "name",
+              "type": "string",
+              "displayname": "Name",
+              "required": true
+            },
+            {
+              "name": "description",
+              "displayname": "Description",
+              "type": "string",
+              "required": false
+            }
+          ],
+          "additionalattributes": [
+            {
+              "name": "action",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "entity",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "entityid",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "actor",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "metadata",
+              "type": "json",
+              "required": false
+            }
+          ]
+        }
+      },
+      "methods": [
+        {
+          "name": "read",
+          "description": "Read a single item",
+          "parameters": [
+            {
+              "name": "id",
+              "description": "The id of the item",
+              "type": "int64",
+              "required": true
+            }
+          ],
+          "returns": {
+            "type": "object"
+          }
+        },
+        {
+          "name": "create",
+          "description": "Create a new item",
+          "parameters": [
+            {
+              "name": "item",
+              "description": "The item to create",
+              "type": "object",
+              "required": true
+            }
+          ],
+          "returns": {
+            "type": "object"
+          }
+        },
+        {
+          "name": "update",
+          "description": "Update an existing item",
+          "parameters": [
+            {
+              "name": "item",
+              "description": "The item to update",
+              "type": "object",
+              "required": true
+            }
+          ],
+          "returns": {
+            "type": "object"
+          }
+        },
+        {
+          "name": "delete",
+          "description": "Delete an existing item",
+          "parameters": [
+            {
+              "name": "id",
+              "description": "The id of the item",
+              "type": "int64",
+              "required": true
+            }
+          ],
+          "returns": {
+            "type": "void"
+          }
+        }
+      ]
     }
   ]
 }
