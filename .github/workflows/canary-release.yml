@@ -54,22 +54,23 @@ jobs:
     steps:
       - name: Generate Kubernetes manifest
         run: |
+          app_name=$(echo ${{ github.repository }} | sed 's/\//-/g')
           cat <<EOF > deployment.yml
           apiVersion: apps/v1
           kind: Deployment
           metadata:
-            name:  ${{ github.repository }}-canary
+            name: $app_name
             labels:
-              app: ${{ github.repository }}-canary
+              app: $app_name
           spec:
             replicas: 1
             selector:
               matchLabels:
-                app:  ${{ github.repository }}-canary
+                app: $app_name
             template:
               metadata:
                 labels:
-                  app:  ${{ github.repository }}-canary
+                  app: $app_name
               spec:
                 containers:
                 - name:  ${{ github.repository }}-canary
