@@ -2,7 +2,7 @@
 File have been automatically created. To prevent the file from getting overwritten
 set the Front Matter property ´keep´ to ´true´ syntax for the code snippet
 ---
-keep: false
+keep: true
 ---
 */   
 
@@ -79,21 +79,7 @@ BEGIN
     )
     RETURNING id INTO p_id;
 
-       p_auditlog_params := jsonb_build_object(
-        'tenant', '',
-        'searchindex', '',
-        'name', 'create_auditlog',
-        'status', 'success',
-        'description', '',
-        'action', 'create_auditlog',
-        'entity', 'auditlog',
-        'entityid', -1,
-        'actor', p_actor_name,
-        'metadata', p_params
-    );
-
-    -- Call the create_auditlog procedure
-    CALL proc.create_auditlog(p_actor_name, p_auditlog_params, v_audit_id);
+      
 END;
 $BODY$
 ;
