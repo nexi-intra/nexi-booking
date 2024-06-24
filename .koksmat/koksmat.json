@@ -1,12 +1,12 @@
 {
   "version": {
     "minor": 0,
-    "build": 5,
-    "patch": 5,
+    "build": 6,
+    "patch": 6,
     "major": 0
   },
   "appname": "nexi-booking",
   "dnsprod": "booking.intra.nexigroup.com",
-  "imagename": "ghcr.io/nexi-intra/nexi-booking",
+  "imagename": "ghcr.io/nexi-intra/nexi-booking-v2",
   "port": 4444
 }
