@@ -24,6 +24,7 @@ CREATE TABLE public.auditlog
     ,name character varying COLLATE pg_catalog."default"  NOT NULL
     ,description character varying COLLATE pg_catalog."default" 
     ,action character varying COLLATE pg_catalog."default"  NOT NULL
+    ,status character varying COLLATE pg_catalog."default"  NOT NULL
     ,entity character varying COLLATE pg_catalog."default"  NOT NULL
     ,entityid character varying COLLATE pg_catalog."default"  NOT NULL
     ,actor character varying COLLATE pg_catalog."default"  NOT NULL

@@ -2519,6 +2519,11 @@
           "required": true
         },
         {
+          "name": "status",
+          "type": "string",
+          "required": true
+        },
+        {
           "name": "entity",
           "type": "string",
           "required": true
@@ -13316,6 +13321,11 @@
           "additionalattributes": [
             {
               "name": "action",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "status",
               "type": "string",
               "required": true
             },

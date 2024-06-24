@@ -25,6 +25,9 @@ DECLARE
     v_country_id INTEGER;
     v_parkingenabled BOOLEAN;
     v_deskbookingenabled BOOLEAN;
+        v_audit_id integer;  -- Variable to hold the OUT parameter value
+    p_auditlog_params jsonb;
+
 BEGIN
     v_tenant := p_params->>'tenant';
     v_searchindex := p_params->>'searchindex';
@@ -67,6 +70,22 @@ BEGIN
         v_deskbookingenabled
     )
     RETURNING id INTO p_id;
+
+       p_auditlog_params := jsonb_build_object(
+        'tenant', '',
+        'searchindex', '',
+        'name', 'create_site',
+        'status', 'success',
+        'description', '',
+        'action', 'create_site',
+        'entity', 'site',
+        'entityid', -1,
+        'actor', p_actor_name,
+        'metadata', p_params
+    );
+
+    -- Call the create_auditlog procedure
+    CALL proc.create_auditlog(p_actor_name, p_auditlog_params, v_audit_id);
 END;
 $BODY$
 ;

@@ -24,6 +24,10 @@ DECLARE
     v_code VARCHAR;
     v_flagurl VARCHAR;
     v_metadata JSONB;
+        v_audit_id integer;  -- Variable to hold the OUT parameter value
+    p_auditlog_params jsonb;
+
+    
 BEGIN
     v_tenant := p_params->>'tenant';
     v_searchindex := p_params->>'searchindex';
@@ -46,6 +50,20 @@ BEGIN
         flagurl = v_flagurl,
         metadata = v_metadata
     WHERE id = v_id;
+
+
+           p_auditlog_params := jsonb_build_object(
+        'tenant', '',
+        'searchindex', '',
+        'name', 'update_country',
+        'status', 'success',
+        'description', '',
+        'action', 'update_country',
+        'entity', 'country',
+        'entityid', -1,
+        'actor', p_actor_name,
+        'metadata', p_params
+    );
 END;
 $BODY$
 ;

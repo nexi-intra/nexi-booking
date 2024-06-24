@@ -22,16 +22,22 @@ DECLARE
     v_name VARCHAR COLLATE pg_catalog."default" ;
     v_description VARCHAR COLLATE pg_catalog."default";
     v_action VARCHAR;
+    v_status VARCHAR;
     v_entity VARCHAR;
     v_entityid VARCHAR;
     v_actor VARCHAR;
     v_metadata JSONB;
+        v_audit_id integer;  -- Variable to hold the OUT parameter value
+    p_auditlog_params jsonb;
+
+    
 BEGIN
     v_tenant := p_params->>'tenant';
     v_searchindex := p_params->>'searchindex';
     v_name := p_params->>'name';
     v_description := p_params->>'description';
     v_action := p_params->>'action';
+    v_status := p_params->>'status';
     v_entity := p_params->>'entity';
     v_entityid := p_params->>'entityid';
     v_actor := p_params->>'actor';
@@ -47,11 +53,26 @@ BEGIN
         name = v_name,
         description = v_description,
         action = v_action,
+        status = v_status,
         entity = v_entity,
         entityid = v_entityid,
         actor = v_actor,
         metadata = v_metadata
     WHERE id = v_id;
+
+
+           p_auditlog_params := jsonb_build_object(
+        'tenant', '',
+        'searchindex', '',
+        'name', 'update_auditlog',
+        'status', 'success',
+        'description', '',
+        'action', 'update_auditlog',
+        'entity', 'auditlog',
+        'entityid', -1,
+        'actor', p_actor_name,
+        'metadata', p_params
+    );
 END;
 $BODY$
 ;

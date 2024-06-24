@@ -22,6 +22,9 @@ DECLARE
     v_name VARCHAR COLLATE pg_catalog."default" ;
     v_description VARCHAR COLLATE pg_catalog."default";
     v_homecountry_id INTEGER;
+        v_audit_id integer;  -- Variable to hold the OUT parameter value
+    p_auditlog_params jsonb;
+
 BEGIN
     v_tenant := p_params->>'tenant';
     v_searchindex := p_params->>'searchindex';
@@ -55,6 +58,22 @@ BEGIN
         v_homecountry_id
     )
     RETURNING id INTO p_id;
+
+       p_auditlog_params := jsonb_build_object(
+        'tenant', '',
+        'searchindex', '',
+        'name', 'create_user',
+        'status', 'success',
+        'description', '',
+        'action', 'create_user',
+        'entity', 'user',
+        'entityid', -1,
+        'actor', p_actor_name,
+        'metadata', p_params
+    );
+
+    -- Call the create_auditlog procedure
+    CALL proc.create_auditlog(p_actor_name, p_auditlog_params, v_audit_id);
 END;
 $BODY$
 ;

@@ -18,6 +18,10 @@ AS $BODY$
 DECLARE
     v_id INTEGER;
     v_hard BOOLEAN;
+        v_audit_id integer;  -- Variable to hold the OUT parameter value
+    p_auditlog_params jsonb;
+
+
 BEGIN
     v_id := p_params->>'id';
     v_hard := p_params->>'hard';
@@ -33,6 +37,18 @@ BEGIN
             updated_by = p_actor_name
         WHERE id = v_id;
     END IF;
+           p_auditlog_params := jsonb_build_object(
+        'tenant', '',
+        'searchindex', '',
+        'name', 'delete_country',
+        'status', 'success',
+        'description', '',
+        'action', 'delete_country',
+        'entity', 'country',
+        'entityid', -1,
+        'actor', p_actor_name,
+        'metadata', p_params
+    );
 END;
 $BODY$
 ;

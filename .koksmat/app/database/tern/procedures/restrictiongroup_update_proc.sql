@@ -22,6 +22,10 @@ DECLARE
     v_name VARCHAR COLLATE pg_catalog."default" ;
     v_description VARCHAR COLLATE pg_catalog."default";
     v_code VARCHAR;
+        v_audit_id integer;  -- Variable to hold the OUT parameter value
+    p_auditlog_params jsonb;
+
+    
 BEGIN
     v_tenant := p_params->>'tenant';
     v_searchindex := p_params->>'searchindex';
@@ -40,6 +44,20 @@ BEGIN
         description = v_description,
         code = v_code
     WHERE id = v_id;
+
+
+           p_auditlog_params := jsonb_build_object(
+        'tenant', '',
+        'searchindex', '',
+        'name', 'update_restrictiongroup',
+        'status', 'success',
+        'description', '',
+        'action', 'update_restrictiongroup',
+        'entity', 'restrictiongroup',
+        'entityid', -1,
+        'actor', p_actor_name,
+        'metadata', p_params
+    );
 END;
 $BODY$
 ;

@@ -16,6 +16,10 @@ LANGUAGE plpgsql
 AS $BODY$
 DECLARE
     v_id INTEGER;
+        v_audit_id integer;  -- Variable to hold the OUT parameter value
+    p_auditlog_params jsonb;
+
+
 BEGIN
     v_id := p_params->>'id';
     
@@ -25,6 +29,19 @@ BEGIN
         updated_at = CURRENT_TIMESTAMP,
         updated_by = p_actor_name
     WHERE id = v_id;
+
+           p_auditlog_params := jsonb_build_object(
+        'tenant', '',
+        'searchindex', '',
+        'name', 'undo_delete_site',
+        'status', 'success',
+        'description', '',
+        'action', 'undo_delete_site',
+        'entity', 'site',
+        'entityid', -1,
+        'actor', p_actor_name,
+        'metadata', p_params
+    );
 END;
 $BODY$
 ;
