@@ -41,7 +41,16 @@ jobs:
           tags: ghcr.io/${{ github.repository }}:canary
           cache-from: type=gha
           cache-to: type=gha,mode=max
-
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      # This is used to complete the identity challenge
+      # with sigstore/fulcio when running outside of PRs.
+      id-token: write
+        
+    steps:
       - name: Generate Kubernetes manifest
         run: |
           cat <<EOF > deployment.yml
