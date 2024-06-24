@@ -38,7 +38,7 @@ jobs:
           context: .
           file: ./Dockerfile.web
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/${{ github.repository }}:canary
+          tags: ghcr.io/${{ github.repository }}:canary
 
     #   - name: Generate Kubernetes manifest
     #     run: |
