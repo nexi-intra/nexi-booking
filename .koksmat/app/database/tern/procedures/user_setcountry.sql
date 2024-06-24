@@ -25,7 +25,9 @@ BEGIN
     v_homecountry_id := p_params->>'country_id';  
     UPDATE public.user
     SET
-        homecountry_id = v_homecountry_id
+        homecountry_id = v_homecountry_id,
+        updated_at = NOW(),
+        updated_by = p_actor_name
     WHERE id = v_user_id;
 
     GET DIAGNOSTICS v_rows_updated = ROW_COUNT;

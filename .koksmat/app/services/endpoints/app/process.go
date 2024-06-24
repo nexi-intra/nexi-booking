@@ -16,6 +16,7 @@ import (
 	"log"
 	"os"
 
+	"github.com/nexi-intra/nexi-booking/utils"
 	"github.com/spf13/viper"
 )
 
@@ -73,11 +74,20 @@ func call(procName string, who string, payload json.RawMessage) (string, error) 
 }
 
 func Process(args []string) (*SelectResponse, error) {
-	if len(args) < 2 {
+	if len(args) < 3 {
 		return nil, fmt.Errorf("Expected arguments")
 	}
+	jwt := args[1]
+	if jwt == "" {
+		return nil, fmt.Errorf("Expected JWT")
+	}
+	claims, err := utils.DecodeAndValidateMicrosoftJWT(jwt)
+	if err != nil {
+		return nil, err
+	}
+	upn := claims["upn"].(string)
 
-	rows, err := call(args[0], "system", json.RawMessage(args[1]))
+	rows, err := call(args[0], upn, json.RawMessage(args[2]))
 	if err != nil {
 		return nil, err
 	}
