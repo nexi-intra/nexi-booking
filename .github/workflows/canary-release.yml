@@ -56,6 +56,7 @@ jobs:
         shell: pwsh
         run: |
           $app_name = "${{ github.repository }}-canary".Replace("/", "-")
+          $dnsname =$app_name + ".intra.nexigroup.com"
           $manifest = @"
             apiVersion: apps/v1
             kind: Deployment
@@ -77,7 +78,45 @@ jobs:
                     - name: $app_name
                       image: ghcr.io/${{ github.repository }}:canary
                       ports:
-                        - containerPort: 80
+                        - containerPort: 4444
+                      env:
+                        - name: NATS
+                          value: nats://nats:4222
+
+            ---
+            apiVersion: v1
+              kind: Service
+              metadata:
+                name: $appname
+                labels:
+                  app: $appname
+                  service: $appname
+                spec:
+                ports:
+                - name: http
+                  port: 5301
+                  targetPort: 4444
+                selector:
+                  app: $appname
+                ---    
+                apiVersion: networking.k8s.io/v1
+                kind: Ingress
+                metadata:
+                  name: $appname
+                spec:
+                  rules:
+                  - host: $dnsname
+                    http:
+                      paths:
+                      - path: /
+                        pathType: Prefix
+                        backend:
+                        service:
+                          name: $appname
+                          port:
+                            number: 5301
+
+
           "@ 
 
 
@@ -97,4 +136,4 @@ jobs:
         run: |
           cat deployment.yml
           echo "Deploying to AKS"
-          kubectl apply -f deployment.yml
+          kubectl apply -f deployment.yml -n magicbox-christianiabpos
