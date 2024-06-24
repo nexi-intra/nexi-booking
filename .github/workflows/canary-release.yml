@@ -98,23 +98,23 @@ jobs:
                   targetPort: 4444
                 selector:
                   app: $appname
-                ---    
-                apiVersion: networking.k8s.io/v1
-                kind: Ingress
-                metadata:
-                  name: $appname
-                spec:
-                  rules:
-                  - host: $dnsname
-                    http:
-                      paths:
-                      - path: /
-                        pathType: Prefix
-                        backend:
-                        service:
-                          name: $appname
-                          port:
-                            number: 5301
+            ---    
+            apiVersion: networking.k8s.io/v1
+            kind: Ingress
+            metadata:
+                name: $appname
+            spec:
+                rules:
+                - host: $dnsname
+                http:
+                    paths:
+                    - path: /
+                    pathType: Prefix
+                    backend:
+                    service:
+                        name: $appname
+                        port:
+                        number: 5301
 
 
           "@ 
