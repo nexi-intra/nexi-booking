@@ -18,7 +18,7 @@ export default function SetDefaultCountry() {
           setrunning(true);
         }}
       >
-        Process
+        Set default country
       </Button>
       {error && <div className="bg-red-500">Error: {error}</div>}
       {running && (
