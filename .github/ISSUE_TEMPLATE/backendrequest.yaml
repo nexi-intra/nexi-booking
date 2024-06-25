@@ -2,8 +2,10 @@ name: ℹBackend Request
 description: Request for backend support
 title: "[INFO] <title>"
 labels: ["Backend Request"]
+assignees:
+  - ngjoh
 projects:
-  - "Development"
+  - Development
 body:
   - type: textarea
     attributes:
