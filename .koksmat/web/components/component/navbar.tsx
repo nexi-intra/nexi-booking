@@ -31,12 +31,15 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import Image from "next/image";
 import { useContext } from "react";
 import { MagicboxContext } from "@/app/koksmat/magicbox-context";
+import { usePathname } from "next/navigation";
+import { CountrySelector } from "./country-selector";
+import CountryDropdown from "./countryDropdown";
 
 export function Navbar() {
   const magicbox = useContext(MagicboxContext);
 
   return (
-    <header className="fixed top-0 left-0 z-50 w-full shadow-md backdrop-blur-lg">
+    <header className="fixed top-0 left-0 z-50 w-full shadow-md backdrop-blur-lg dark:bg-blue-700 dark:bg-opacity-20">
       <div className="container flex h-16 items-center justify-between px-4 md:px-6">
         <Link href="/booking" className="hidden items-center md:flex">
           <Image
@@ -148,43 +151,13 @@ export function Navbar() {
           </Link>
         </nav>
         <div className="flex items-center space-x-4">
+          <CountryDropdown type="small" />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button
-                variant="outline"
-                size="sm"
-                className="bg-white bg-opacity-30 shadow-2xl backdrop-blur-xl dark:bg-slate-600 dark:bg-opacity-20 focus:border-none">
-                <GlobeIcon className="h-4 w-4" />
-                <span className="pl-1"> US</span>
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent
-              align="end"
-              className="mt-3 bg-white bg-opacity-40 shadow-2xl backdrop-blur-xl dark:bg-slate-600 dark:bg-opacity-20 border-none">
-              <DropdownMenuItem>
-                <FlagIcon className="mr-2 h-4 w-4" />
-                United States
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <FlagIcon className="mr-2 h-4 w-4" />
-                United Kingdom
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <FlagIcon className="mr-2 h-4 w-4" />
-                Germany
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <FlagIcon className="mr-2 h-4 w-4" />
-                France
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Avatar>
+              <Avatar className="cursor-pointer">
                 <AvatarImage src={magicbox.user?.image} />
-                <AvatarFallback>
-                  <div className="bg-white bg-opacity-30 shadow-2xl backdrop-blur-xl dark:bg-slate-600 dark:bg-opacity-20">
+                <AvatarFallback className="bg-white bg-opacity-30 shadow-2xl backdrop-blur-xl dark:bg-slate-600 dark:bg-opacity-20 focus:border-none">
+                  <div>
                     {magicbox?.user?.name
                       .split(" ")
                       .map((namePart) => namePart[0])
@@ -196,6 +169,9 @@ export function Navbar() {
             <DropdownMenuContent
               align="end"
               className="mt-3 bg-white bg-opacity-40 shadow-2xl backdrop-blur-xl dark:bg-slate-600 dark:bg-opacity-20 border-none">
+              {/* {magicbox.user?.roles?.map((role) => (
+                <DropdownMenuItem key={role}>{role}</DropdownMenuItem>
+              ))} */}
               <DropdownMenuItem>My Account</DropdownMenuItem>
               <DropdownMenuItem>Settings</DropdownMenuItem>
               <DropdownMenuSeparator />

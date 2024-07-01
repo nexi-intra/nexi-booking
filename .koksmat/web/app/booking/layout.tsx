@@ -17,6 +17,8 @@ import Tracer from "@/app/koksmat/components/tracer";
 
 import { leftRailApps } from "./navigation";
 import { Navbar } from "@/components/component/navbar";
+import { BookingContextProvider } from "./context/bookingContextProvider";
+import DarkModeToggle from "@/components/darkmodetoggle";
 export default function Layout(props: { children: any }) {
   const { children } = props;
   const magicbox = useContext(MagicboxContext);
@@ -36,8 +38,7 @@ export default function Layout(props: { children: any }) {
                 const signedIn = await magicbox.signIn(["User.Read"], "");
 
                 magicbox.refresh();
-              }}
-            >
+              }}>
               Sign In using Microsoft 365 account
             </Button>
           </div>
@@ -49,17 +50,22 @@ export default function Layout(props: { children: any }) {
   }
   return (
     <AppProvider>
-      <div className="h-[100vh] w-full bg-[url('/Booking_15.png')] bg-cover dark:bg-[url('/Booking_black.png')] flex">
-        <Navbar />
-        <div className="flex w-full">
-          <div className="pt-20 grow h-full">{children}</div>
-          {magicbox.showTracer && (
-            <div className="hidden md:block min-w-56 bg-slate-300 mt-20">
-              <Tracer />
-            </div>
-          )}
+      <BookingContextProvider>
+        <div className="h-[100vh] w-full bg-[url('/Booking_15.png')] bg-cover dark:bg-[url('/Booking_black.png')] flex">
+          <Navbar />
+          <div className="flex w-full">
+            <div className="pt-20 grow h-full">{children}</div>
+            {/* {magicbox.showTracer && (
+              <div className="hidden md:block min-w-56 bg-slate-300 mt-20">
+                <Tracer />
+              </div>
+            )} */}
+          </div>
+          <div className="absolute z-50 left-2 bottom-2">
+            <DarkModeToggle />
+          </div>
         </div>
-      </div>
+      </BookingContextProvider>
     </AppProvider>
   );
 }
