@@ -29,12 +29,16 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import Image from "next/image";
+import { useContext } from "react";
+import { MagicboxContext } from "@/app/koksmat/magicbox-context";
 
 export function Navbar() {
+  const magicbox = useContext(MagicboxContext);
+
   return (
     <header className="fixed top-0 left-0 z-50 w-full shadow-md backdrop-blur-lg">
       <div className="container flex h-16 items-center justify-between px-4 md:px-6">
-        <Link href="/booking" className="flex items-center">
+        <Link href="/booking" className="hidden items-center md:flex">
           <Image
             src="/NEXI_RGB_Colore.png"
             alt="Booking"
@@ -92,9 +96,29 @@ export function Navbar() {
               </div>
             </SheetContent>
           </Sheet>
-          <Link href="#" className="mx-auto flex items-center" prefetch={false}>
-            <MountainIcon className="h-6 w-6" />
-            <span className="sr-only">Acme Inc</span>
+          <Link
+            href="#"
+            className="mx-auto items-center flex md:hidden"
+            prefetch={false}>
+            <Image
+              src="/NEXI_RGB_Colore.png"
+              alt="Booking"
+              height={45}
+              width={45}
+              className="dark:hidden"
+            />
+            <Image
+              className="hidden dark:block"
+              src="/NEXI_RGB_Bianco.png"
+              alt="Booking"
+              height={45}
+              width={45}
+            />
+
+            {/* <Icons.logo className="h-6 w-6" /> */}
+            <span className=" ml-1 font-bold text-[#2D32AA] dark:text-white">
+              {"  "}Booking Solution
+            </span>
           </Link>
         </div>
         <nav className="hidden space-x-4 md:flex">
@@ -126,12 +150,17 @@ export function Navbar() {
         <div className="flex items-center space-x-4">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm">
+              <Button
+                variant="outline"
+                size="sm"
+                className="bg-white bg-opacity-30 shadow-2xl backdrop-blur-xl dark:bg-slate-600 dark:bg-opacity-20 focus:border-none">
                 <GlobeIcon className="h-4 w-4" />
-                <span>US</span>
+                <span className="pl-1"> US</span>
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
+            <DropdownMenuContent
+              align="end"
+              className="mt-3 bg-white bg-opacity-40 shadow-2xl backdrop-blur-xl dark:bg-slate-600 dark:bg-opacity-20 border-none">
               <DropdownMenuItem>
                 <FlagIcon className="mr-2 h-4 w-4" />
                 United States
@@ -152,12 +181,21 @@ export function Navbar() {
           </DropdownMenu>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Avatar className="h-8 w-8">
-                <AvatarImage src="/placeholder-user.jpg" />
-                <AvatarFallback>JP</AvatarFallback>
+              <Avatar>
+                <AvatarImage src={magicbox.user?.image} />
+                <AvatarFallback>
+                  <div className="bg-white bg-opacity-30 shadow-2xl backdrop-blur-xl dark:bg-slate-600 dark:bg-opacity-20">
+                    {magicbox?.user?.name
+                      .split(" ")
+                      .map((namePart) => namePart[0])
+                      .join("")}{" "}
+                  </div>
+                </AvatarFallback>
               </Avatar>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
+            <DropdownMenuContent
+              align="end"
+              className="mt-3 bg-white bg-opacity-40 shadow-2xl backdrop-blur-xl dark:bg-slate-600 dark:bg-opacity-20 border-none">
               <DropdownMenuItem>My Account</DropdownMenuItem>
               <DropdownMenuItem>Settings</DropdownMenuItem>
               <DropdownMenuSeparator />
