@@ -17,7 +17,8 @@ CREATE OR REPLACE PROCEDURE proc.create_restrictiongroup(
 LANGUAGE plpgsql
 AS $BODY$
 DECLARE
-    v_tenant VARCHAR COLLATE pg_catalog."default" ;
+       v_rows_updated INTEGER;
+v_tenant VARCHAR COLLATE pg_catalog."default" ;
     v_searchindex VARCHAR COLLATE pg_catalog."default" ;
     v_name VARCHAR COLLATE pg_catalog."default" ;
     v_description VARCHAR COLLATE pg_catalog."default";
@@ -71,9 +72,30 @@ BEGIN
         'actor', p_actor_name,
         'metadata', p_params
     );
+/*###MAGICAPP-START##
+{
+    "version": "v0.0.1",
+    "action": "create",
+    "input" : {
+  "type": "object",
+  "properties": {
+  
+    "tenant": { "type": "string" },
+    "searchindex": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "code": { "type": "string" }
+}
+    }
+
+##MAGICAPP-END##*/
 
     -- Call the create_auditlog procedure
     CALL proc.create_auditlog(p_actor_name, p_auditlog_params, v_audit_id);
 END;
 $BODY$
 ;
+
+
+
+
